@@ -26,6 +26,5 @@ public class StringToDateConverter implements Converter<String, Date> {
         } catch (ParseException e) {
             throw new IllegalArgumentException("invalid date format.Please use this pattern\"" + datePattern + "\"");
         }
-        return null;
     }
 }

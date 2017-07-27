@@ -1,16 +1,15 @@
 package com.gafker.www.utils.converter;
 
-import org.springframework.format.FormatterRegistrar;
+
 import org.springframework.format.FormatterRegistry;
-import org.springframework.format.datetime.DateFormatter;
 
 /**
  * Created by gafker on 2017/7/26.
  */
-public class StringToDateFormatter implements FormatterRegistrar{
+public class FormatterRegistrar implements org.springframework.format.FormatterRegistrar {
     private String datePattern;
 
-    public StringToDateFormatter(String datePattern) {
+    public FormatterRegistrar(String datePattern) {
         this.datePattern = datePattern;
     }
 
