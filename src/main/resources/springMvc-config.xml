@@ -10,10 +10,13 @@
        http://www.springframework.org/schema/beans/spring-mvc.xsd
               http://www.springframework.org/schema/context
        http://www.springframework.org/schema/beans/spring-context.xsd">
+    <!--扫描目标-->
     <context:component-scan base-package="com.gafker.www.controller"/>
     <context:component-scan base-package="com.gafker.www.service"/>
     <!--利用Converter,Formatter做格式转换公共配置 适用于web层与service使用-->
+    <!--包括注册用于支持基于注解的控制器的请求处理方法的Bean对象-->
     <mvc:annotation-driven conversion-service="conversionService"/>
+    <!--处理静态资源-->
     <mvc:resources mapping="/static/**" location="/static/"/>
     <mvc:resources mapping="/html/*.html" location="/"/>
     <!--利用Converter做格式转换 适用于web层与service使用-->
@@ -22,6 +25,12 @@
         <property name="converters">
             <set>
                 <bean class="com.gafker.www.utils.converter.StringToDateConverter">
+                    <constructor-arg type="java.lang.String" value="MM-dd-yyyy"/>
+                </bean>
+                <bean class="com.gafker.www.utils.converter.LongToDateConverter">
+                    <constructor-arg type="java.lang.String" value="MM-dd-yyyy"/>
+                </bean>
+                <bean class="com.gafker.www.utils.converter.IntegerToDateConverter">
                     <constructor-arg type="java.lang.String" value="MM-dd-yyyy"/>
                 </bean>
             </set>
@@ -48,6 +57,15 @@
             </set>
         </property>
         -->
+    </bean>
+
+    <!--messageSource从属性文件中获取错误码内容-->
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basenames">
+            <list>
+                <value>messages</value>
+            </list>
+        </property>
     </bean>
     <!--视图解析器-->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
