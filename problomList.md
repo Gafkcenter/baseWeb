@@ -1,28 +1,35 @@
 #2017 ##2017.7 ###27
 
-Game CDN 2017.7.27 è´¹ç”¨è¿‡é«˜å¾…å®š
+Game CDN 2017.7.27 ·ÑÓÃ¹ý¸ß´ý¶¨
 
  1.1.47M
- 2.è´¹ç”¨26/æœˆ/M
- 3.è´¹ç”¨è¿‡é«˜
+ 2.·ÑÓÃ26/ÔÂ/M
+ 3.·ÑÓÃ¹ý¸ß
 URL encode&decode
 
  dfd
  dfdf
  fdfd
-MD5 éªŒç­¾ & Base64
+MD5 ÑéÇ© & Base64
 
- http://blog.csdn.net/xifeijian/article/details/8209731   @ç†Šé”‹(ç†Šé”‹) ç½‘é¡µé‡‘å¸ç­¹ç å…‘æ¢åŠ å¯†é€»è¾‘å‚è€ƒCSRFæ”»å‡»åŽŸç†
+ http://blog.csdn.net/xifeijian/article/details/8209731   @ÐÜ·æ(ÐÜ·æ) ÍøÒ³½ð±Ò³ïÂë¶Ò»»¼ÓÃÜÂß¼­²Î¿¼CSRF¹¥»÷Ô­Àí
  dfdf
  fdfd
 WorldTime 2017.7.30  done
 
  GMT
-å›¾åƒå®¡æ ¸&ç”¨æˆ·è¯¦æƒ…éƒ¨æ—¶é•¿å¤©æ•° å›¾åƒå®¡æ ¸pass å®Œæˆ
+Í¼ÏñÉóºË&ÓÃ»§ÏêÇé²¿Ê±³¤ÌìÊý Í¼ÏñÉóºËpass Íê³É
 
-æ”¶ä¸åˆ°å¼€æ’­æé†’ 2017.7.28è¿›è¡Œä¸­ é¡¹ç›®å†…éƒ¨å·²ç»å‘å‡ºä¸»è¦æ˜¯Jpushå»¶è¿Ÿå¯¼è‡´
+ÊÕ²»µ½¿ª²¥ÌáÐÑ 2017.7.28½øÐÐÖÐ ÏîÄ¿ÄÚ²¿ÒÑ¾­·¢³öÖ÷ÒªÊÇJpushÑÓ³Ùµ¼ÖÂ
 
-å®¶æ—ç®¡ç†æçŽ°å®¡æ ¸é™¤0é”™è¯¯ å®Œæˆ2017.7.28 52.211.75.21
+¼Ò×å¹ÜÀíÌáÏÖÉóºË³ý0´íÎó Íê³É2017.7.28 52.211.75.21
 
-å®žçŽ°è½¬æ¢å™¨ä¸Žæ ¼å¼åŒ–å™¨å¯¹æ—¥æœŸæ“ä½œä¸Žé…ç½® ï¼ˆå®Œæˆï¼‰ä¸‹ä¸€æ­¥æ‰©å±•Long to Date Converter ä¸¤ç§æ ¼å¼é—´äº’æ¢ Formatter å­—ç¬¦ä¸²è½¬æ¢åˆ°å…¶å®ƒæ ¼å¼
-Spring éªŒè¯å™¨
+ÊµÏÖ×ª»»Æ÷Óë¸ñÊ½»¯Æ÷¶ÔÈÕÆÚ²Ù×÷ÓëÅäÖÃ £¨Íê³É£©ÏÂÒ»²½À©Õ¹Long to Date Converter Á½ÖÖ¸ñÊ½¼ä»¥»» Formatter ×Ö·û´®×ª»»µ½ÆäËü¸ñÊ½
+Spring ÑéÖ¤Æ÷
+
+###31
+1. Jpush vshowId=1949684
+2. »î¶¯ÒµÎñÍê³É
+3. °æ±¾µü´úÎÊÌâ(ÏòÇ°¼æÈÝ)
+   ...»î¶¯µü´ú
+   ...½Ó¿Úµü´ú
