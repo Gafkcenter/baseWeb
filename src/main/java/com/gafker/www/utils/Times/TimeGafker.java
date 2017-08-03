@@ -37,7 +37,7 @@ public class TimeGafker {
 //        System.out.println("----格林威治西3时区-----------------------------------------------------------------");
 //        outByTimeZoneString(stringParttern,"GMT-03:00");//Etc/GMT+3
 //        System.out.println("---------------------------------------------------------------------");
-
+//
 //        Long longTime = getTimeZoneMills();//0时区毫秒
 //        System.out.println(longTime);
 //        int intCurrZeroTime = getTimeZoneSecond();//0时区秒
@@ -51,10 +51,19 @@ public class TimeGafker {
 //        boolean sameDay = isSameDay(intCurrZeroTime);
 //        System.out.println("The day is same day:"+sameDay);
         //两时区offset间隔(在是时区同一边)--东区
-        getAllTimeZoneIds();
-        String timeString = getGmt0ToOtherTimeString("yyyy-MM-dd HH:mm:ss", 1501358400, "Etc/GMT-8");
-        long timeMills = getGmt0ToOtherTime(1501358400, "Etc/GMT+8");
-        System.out.println("Etc/GMT-8 :" + timeString + ":" + timeMills);
+        //getAllTimeZoneIds();
+        String timeString = getGmt0ToOtherTimeString("yyyy-MM-dd HH:mm:ss", getTimeZoneSecond(), "Etc/GMT+2");
+        long timeMills = getGmt0ToOtherTime(getTimeZoneSecond(), "Etc/GMT+2");
+        System.out.println("Etc/GMT+2 :" + timeString + ":" + timeMills);
+        getDateString(1501551362000l);
+    }
+
+    public static String getDateString(long l){
+        System.out.println("2017-08-01 03:21:54");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String dateString = sdf.format(new Date(l));
+        System.out.println(dateString);
+        return dateString;
     }
 
     /**完整思路

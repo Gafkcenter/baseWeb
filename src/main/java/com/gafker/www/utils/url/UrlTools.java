@@ -14,7 +14,7 @@ import java.util.Map;
 public class UrlTools {
     public static void main(String[] args) {
         try {
-            String params;
+            String params = "";
             Map<String,String> map =new HashMap<>();
             map.put("A1","中国");
             map.put("A2","日本");
@@ -22,7 +22,7 @@ public class UrlTools {
             map.put("A4","英国");
             map.put("A5","法国");
             for(Map.Entry<String,String> m:map.entrySet()){
-                params+="&"+URLEncoder.encode(m.getKey(),"UTF-8")+"="+;
+                params+="&"+URLEncoder.encode(m.getKey(),"UTF-8")+"=";
             }
             String url="http://dbo.vshowlive.com/vshow-console/user/info?userId=334428&name=测试";
             String  name = url;
