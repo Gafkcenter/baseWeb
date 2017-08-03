@@ -1,88 +1,51 @@
 #2017 ##2017.7 ###27
 
-Game CDN 2017.7.27 ·ÑÓÃ¹ý¸ß´ý¶¨
+Game CDN 2017.7.27 è´¹ç”¨è¿‡é«˜å¾…å®š
 
- 1.1.47M
- 2.·ÑÓÃ26/ÔÂ/M
- 3.·ÑÓÃ¹ý¸ß
-URL encode&decode
+1.1.47M 2.è´¹ç”¨26/æœˆ/M 3.è´¹ç”¨è¿‡é«˜ URL encode&decode
 
- dfd
- dfdf
- fdfd
-MD5 ÑéÇ© & Base64
+dfd dfdf fdfd MD5 éªŒç­¾ & Base64
 
- http://blog.csdn.net/xifeijian/article/details/8209731   @ÐÜ·æ(ÐÜ·æ) ÍøÒ³½ð±Ò³ïÂë¶Ò»»¼ÓÃÜÂß¼­²Î¿¼CSRF¹¥»÷Ô­Àí
- dfdf
- fdfd
-WorldTime 2017.7.30  done
+http://blog.csdn.net/xifeijian/article/details/8209731 @ç†Šé”‹(ç†Šé”‹) ç½‘é¡µé‡‘å¸ç­¹ç å…‘æ¢åŠ å¯†é€»è¾‘å‚è€ƒCSRFæ”»å‡»åŽŸç† dfdf fdfd WorldTime 2017.7.30 done
 
- GMT
-Í¼ÏñÉóºË&ÓÃ»§ÏêÇé²¿Ê±³¤ÌìÊý Í¼ÏñÉóºËpass Íê³É
+GMT å›¾åƒå®¡æ ¸&ç”¨æˆ·è¯¦æƒ…éƒ¨æ—¶é•¿å¤©æ•° å›¾åƒå®¡æ ¸pass å®Œæˆ
 
-ÊÕ²»µ½¿ª²¥ÌáÐÑ 2017.7.28½øÐÐÖÐ ÏîÄ¿ÄÚ²¿ÒÑ¾­·¢³öÖ÷ÒªÊÇJpushÑÓ³Ùµ¼ÖÂ
+æ”¶ä¸åˆ°å¼€æ’­æé†’ 2017.7.28è¿›è¡Œä¸­ é¡¹ç›®å†…éƒ¨å·²ç»å‘å‡ºä¸»è¦æ˜¯Jpushå»¶è¿Ÿå¯¼è‡´
 
-¼Ò×å¹ÜÀíÌáÏÖÉóºË³ý0´íÎó Íê³É2017.7.28 52.211.75.21
+å®¶æ—ç®¡ç†æçŽ°å®¡æ ¸é™¤0é”™è¯¯ å®Œæˆ2017.7.28 52.211.75.21
 
-ÊµÏÖ×ª»»Æ÷Óë¸ñÊ½»¯Æ÷¶ÔÈÕÆÚ²Ù×÷ÓëÅäÖÃ £¨Íê³É£©ÏÂÒ»²½À©Õ¹Long to Date Converter Á½ÖÖ¸ñÊ½¼ä»¥»» Formatter ×Ö·û´®×ª»»µ½ÆäËü¸ñÊ½
-Spring ÑéÖ¤Æ÷
+å®žçŽ°è½¬æ¢å™¨ä¸Žæ ¼å¼åŒ–å™¨å¯¹æ—¥æœŸæ“ä½œä¸Žé…ç½® ï¼ˆå®Œæˆï¼‰ä¸‹ä¸€æ­¥æ‰©å±•Long to Date Converter ä¸¤ç§æ ¼å¼é—´äº’æ¢ Formatter å­—ç¬¦ä¸²è½¬æ¢åˆ°å…¶å®ƒæ ¼å¼ Spring éªŒè¯å™¨
 
 ###31
-1. Jpush vshowId=1949684  done
-2. »î¶¯ÒµÎñÍê³É £¨ÐÒÔË´ó×ªÅÌ,7ÈÕ»¶Ó­ËÌ,·ÖÏíÖ±²¥£¨Ã¿ÈÕ´ïÖ¸¶¨ÊýÁ¿£©,ÉèÖÃÍ·Ïñ£¨×´Ì¬±íÖÐÓÐ¼ÇÂ¼ÈÎÎñÒÑ×ö£©,¹Ø×¢Ö÷²¥£¨Ò»´ÎÐÔµ½´ïÖ¸¶¨ÊýÁ¿£©£©
-3. °æ±¾µü´úÎÊÌâ(ÏòÇ°¼æÈÝ)
-   ...»î¶¯µü´ú
-   ...½Ó¿Úµü´úÐÂ°æ±¾£¨²»Í¬°æ±¾ÓÃ²»Í¬µÄController,Service,Mapper£©
-      ÃüÃû¹æÔò£º¹¦ÄÜÄ£¿éÃûVxx
-4. °²È«ÐÔ¼ÓÃÜ£¨URL±àÂë,ÑéÇ©,¼ÓÃÜ£©
-     ÍøÒ³½ð±Ò³ïÂë¶Ò»»¼ÓÃÜÂß¼­²Î¿¼CSRF¹¥»÷Ô­Àí
-     http://blog.csdn.net/xifeijian/article/details/8209731
-5. ·þÎñÆ÷Æ÷¶¯Ì¬ÇÐ»»
-       IOSÊÕÒæÓëÖ§¸¶·½Ê½Òþ²Ø£¨Ios½â¾ö£©
-       ÉóºËÈÈÇÐ»»£ºµ÷ÓÃAPIµØÖ·,µ÷ÓÃIMµØÖ·£¨½â¾öAPPÖÐµØÖ·²»ÄÜ×ÔÓÉÇÐ»»ÎÊÌâ£©
-6. ÍâÍø·þÎñÆ÷Ê¹ÓÃ
-   ÄÜµÇÂ¼ÁË
-   Êý¾Ý¿â»¹±ß²»ÉÏÍ¨¹ý¿Í»§¶Ë
-   
-   
-7. Ê±ÇøÉÏ°àÍ³¼ÆÒì³£ 1910465
-####vshowId:1745253
-  searchStartTime:1501430400000
-  searchEndTime:1501516740000
-  timezone:8
-  startTime:2017-07-31 00:00
-  endTime:2017-07-31 23:59
-    1. startTime GMT0+ZONE
-    2. endTime GMT0+ZONE
-    3. search GMT0-zoneP+zoneU
-    4. two Days 
-    
-    2017-08-01 22:21:22
-    
-8. ³ïÂëÁ÷Ë®
- ÐèÇó£º
-  1.	É¸Ñ¡Ìõ¼þ¡£
-    vshowID¡¢êÇ³Æ¡¢ÆðÊ¼Ê±¼ä¡¢½áÊøÊ±¼ä£¬Ñ¡Ôñ³ïÂëÁ÷Ë®ÀàÐÍ£¨°ÙÍòºÀÀñÌìÌìËÍ¡¢¹Û¿´Ö±²¥ÈÎÎñ1¡¢¹Û¿´Ö±²¥ÈÎÎñ2¡¢½ð±Ò¶Ò»»³ïÂë¡¢³ïÂë¶Ò»»½ð±Ò¡¢ÓÎÏ·²Ê½ð¡¢ÓÎÏ·ÏûºÄ£©
-  2£®ÅÅÐòÌõ¼þ¡£
-       µ±Ç°ÕË»§³ïÂëµ¹Ðò¡¢µ±Ç°ÕË»§³ïÂëÉýÐò¡¢ µ¥´Î³ïÂëÁ÷Ë®ÉýÐò¡¢µ¥´Î³ïÂëÁ÷Ë®µ¹Ðò¡£
-  3.	²éÑ¯½á¹ûÍ³¼Æ¡£
-    µ±ÔÚËÑË÷Ìõ¼þÏÂ£¬ÏÈÔÚÉÏ·½ÏÔÊ¾×Ü¼Æ½á¹û¡£ ÏÔÊ¾ÎÄ°¸ÈçÏÂ£º
-    ²éÑ¯½á¹û£º¹²xÌõ¼ÇÂ¼£¬ÓÉyÈË²úÉú£¬ÀÛ¼ÆÔö¼Ó³ïÂëm,ÀÛ¼Æ¼õÉÙ³ïÂën¡£
-  4.	ÁÐ±í½á¹û×Ö¶Î¡£
-    Vshowid£¨µã»÷¿ÉÌø×ª£©¡¢êÇ³Æ¡¢µ±Ç°ÕË»§³ïÂë×ÜÊý¡¢Ê±¼ä¡¢³ïÂëÁ÷Ë®£¨¼õÉÙÒÔ-a±íÊ¾£¬Ôö¼ÓÒÔb±íÊ¾£©¡¢Á÷Ë®ÀàÐÍ¡£
- Ïà¹Ø±í:
-   ÈÎÎñËÍ³ïÂë ta_activity_task_record
-   ½ð±Ò¶Ò»»³ïÂë vmoney_to_vcoin_record
-   ÍæÓÎÏ·ÏûºÄ³ïÂë co_product_usage_record
-  
-9. ¿É×öÈÎÎñÁÐ±í
-   °ÙÍòºÃÉç£¬Ö±²¥Ò»£¬Ö±²¥¶þ
-   
-10. ½üÆÚ¹¤×÷
-    Ê±Çø
-    iosÊÕÒæÒþ²Ø done
-    iosµÚÈý·½Ö§¸¶Òþ²Ø  done
-    ÓÃ»§ÈÎÎñÍê³É×´Ì¬
-    Ç¿ÖÆ¸üÐÂ
-    ÓÎÏ·ÍÆËÍ done
-    
+
+Jpush vshowId=1949684 done
+
+æ´»åŠ¨ä¸šåŠ¡å®Œæˆ ï¼ˆå¹¸è¿å¤§è½¬ç›˜,7æ—¥æ¬¢è¿Žé¢‚,åˆ†äº«ç›´æ’­ï¼ˆæ¯æ—¥è¾¾æŒ‡å®šæ•°é‡ï¼‰,è®¾ç½®å¤´åƒï¼ˆçŠ¶æ€è¡¨ä¸­æœ‰è®°å½•ä»»åŠ¡å·²åšï¼‰,å…³æ³¨ä¸»æ’­ï¼ˆä¸€æ¬¡æ€§åˆ°è¾¾æŒ‡å®šæ•°é‡ï¼‰ï¼‰
+
+ç‰ˆæœ¬è¿­ä»£é—®é¢˜(å‘å‰å…¼å®¹) ...æ´»åŠ¨è¿­ä»£ ...æŽ¥å£è¿­ä»£æ–°ç‰ˆæœ¬ï¼ˆä¸åŒç‰ˆæœ¬ç”¨ä¸åŒçš„Controller,Service,Mapperï¼‰ å‘½åè§„åˆ™ï¼šåŠŸèƒ½æ¨¡å—åVxx
+
+å®‰å…¨æ€§åŠ å¯†ï¼ˆURLç¼–ç ,éªŒç­¾,åŠ å¯†ï¼‰ ç½‘é¡µé‡‘å¸ç­¹ç å…‘æ¢åŠ å¯†é€»è¾‘å‚è€ƒCSRFæ”»å‡»åŽŸç† http://blog.csdn.net/xifeijian/article/details/8209731
+
+æœåŠ¡å™¨å™¨åŠ¨æ€åˆ‡æ¢ IOSæ”¶ç›Šä¸Žæ”¯ä»˜æ–¹å¼éšè—ï¼ˆIosè§£å†³ï¼‰ å®¡æ ¸çƒ­åˆ‡æ¢ï¼šè°ƒç”¨APIåœ°å€,è°ƒç”¨IMåœ°å€ï¼ˆè§£å†³APPä¸­åœ°å€ä¸èƒ½è‡ªç”±åˆ‡æ¢é—®é¢˜ï¼‰
+
+å¤–ç½‘æœåŠ¡å™¨ä½¿ç”¨ èƒ½ç™»å½•äº† æ•°æ®åº“è¿˜è¾¹ä¸ä¸Šé€šè¿‡å®¢æˆ·ç«¯
+
+æ—¶åŒºä¸Šç­ç»Ÿè®¡å¼‚å¸¸ 1910465 ####vshowId:1745253 searchStartTime:1501430400000 searchEndTime:1501516740000 timezone:8 startTime:2017-07-31 00:00 endTime:2017-07-31 23:59
+
+startTime GMT0+ZONE
+endTime GMT0+ZONE
+search GMT0-zoneP+zoneU
+two Days
+2017-08-01 22:21:22
+
+ç­¹ç æµæ°´ éœ€æ±‚ï¼š
+
+ç­›é€‰æ¡ä»¶ã€‚ vshowIDã€æ˜µç§°ã€èµ·å§‹æ—¶é—´ã€ç»“æŸæ—¶é—´ï¼Œé€‰æ‹©ç­¹ç æµæ°´ç±»åž‹ï¼ˆç™¾ä¸‡è±ªç¤¼å¤©å¤©é€ã€è§‚çœ‹ç›´æ’­ä»»åŠ¡1ã€è§‚çœ‹ç›´æ’­ä»»åŠ¡2ã€é‡‘å¸å…‘æ¢ç­¹ç ã€ç­¹ç å…‘æ¢é‡‘å¸ã€æ¸¸æˆå½©é‡‘ã€æ¸¸æˆæ¶ˆè€—ï¼‰ 2ï¼ŽæŽ’åºæ¡ä»¶ã€‚ å½“å‰è´¦æˆ·ç­¹ç å€’åºã€å½“å‰è´¦æˆ·ç­¹ç å‡åºã€ å•æ¬¡ç­¹ç æµæ°´å‡åºã€å•æ¬¡ç­¹ç æµæ°´å€’åºã€‚
+
+æŸ¥è¯¢ç»“æžœç»Ÿè®¡ã€‚ å½“åœ¨æœç´¢æ¡ä»¶ä¸‹ï¼Œå…ˆåœ¨ä¸Šæ–¹æ˜¾ç¤ºæ€»è®¡ç»“æžœã€‚ æ˜¾ç¤ºæ–‡æ¡ˆå¦‚ä¸‹ï¼š æŸ¥è¯¢ç»“æžœï¼šå…±xæ¡è®°å½•ï¼Œç”±yäººäº§ç”Ÿï¼Œç´¯è®¡å¢žåŠ ç­¹ç m,ç´¯è®¡å‡å°‘ç­¹ç nã€‚
+
+åˆ—è¡¨ç»“æžœå­—æ®µã€‚ Vshowidï¼ˆç‚¹å‡»å¯è·³è½¬ï¼‰ã€æ˜µç§°ã€å½“å‰è´¦æˆ·ç­¹ç æ€»æ•°ã€æ—¶é—´ã€ç­¹ç æµæ°´ï¼ˆå‡å°‘ä»¥-aè¡¨ç¤ºï¼Œå¢žåŠ ä»¥bè¡¨ç¤ºï¼‰ã€æµæ°´ç±»åž‹ã€‚ ç›¸å…³è¡¨: ä»»åŠ¡é€ç­¹ç  ta_activity_task_record é‡‘å¸å…‘æ¢ç­¹ç  vmoney_to_vcoin_record çŽ©æ¸¸æˆæ¶ˆè€—ç­¹ç  co_product_usage_record
+
+å¯åšä»»åŠ¡åˆ—è¡¨ ç™¾ä¸‡å¥½ç¤¾ï¼Œç›´æ’­ä¸€ï¼Œç›´æ’­äºŒ
+
+è¿‘æœŸå·¥ä½œ æ—¶åŒº iosæ”¶ç›Šéšè— done iosç¬¬ä¸‰æ–¹æ”¯ä»˜éšè— done ç”¨æˆ·ä»»åŠ¡å®ŒæˆçŠ¶æ€ å¼ºåˆ¶æ›´æ–° æ¸¸æˆæŽ¨é€ done
