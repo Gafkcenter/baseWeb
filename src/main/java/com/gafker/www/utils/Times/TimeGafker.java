@@ -166,17 +166,17 @@ public class TimeGafker {
      * 拿到0时区当前时间毫秒
      */
     public static long getTimeZoneMills() {
+        Date newDate=null;
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date(System.currentTimeMillis());
         //格式化成当地时间输出
         String dateString = sdf.format(date);
         System.out.println(TimeZone.getDefault().getID() + ":" + dateString);
         try {
-            Date newDate = sdf.parse(dateString);
-            return newDate.getTime() - getTimeZoneOffset();
+            newDate = sdf.parse(dateString);
         } catch (ParseException e) {
-            return 0l;
         }
+        return newDate.getTime() - getTimeZoneOffset();
     }
 
     /**
@@ -186,13 +186,18 @@ public class TimeGafker {
         return (int) (getTimeZoneMills() / 1000);
     }
 
+
+    /**
+     * 获取所有的timeZone
+     */
     public static void getAllTimeZoneIds() {
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date da=new Date();
         String[] ids = TimeZone.getAvailableIDs();
         for (int i = 0, len = ids.length; i < len; i++) {
-            System.out.printf(ids[i] + "\t");
-            if (i % 14 == 0) {
-                System.out.println(ids[i] + "\t");
-            }
+            TimeZone.setDefault(TimeZone.getTimeZone(ids[i]));
+            sdf.setTimeZone(TimeZone.getTimeZone(ids[i]));
+            System.out.println(ids[i] + ":\t"+da.getTime()+ ":\t"+sdf.format(da)+ ":\t"+da.getTimezoneOffset());
         }
     }
 
@@ -221,5 +226,11 @@ public class TimeGafker {
         System.out.println(sdf.getTimeZone());
     }
 
+/**
+ * 毫秒值
+ * new Date()
+ * System.currentTimeMills();
+ * TimeZone.setDefaultTimeZone();
+ */
 
 }
