@@ -86,9 +86,106 @@ two Days
 
 +++内网测试环境：确认使用之正常运转（im 能够共用吗？，游戏能够共用吗） <h3>done 分开</h3>
 
-++++推送按范围推真人推送限制完成。
+++++推送按范围推真人推送限制完成。  <h3>done</h3>
+
+###2017.8.14
+整理运营管理后台文档: 20%
+整理IM接口文档: 100%
+完善真人配置缓存读取 WAIT
+完善机器人推送策略  DELAY
+
+###2017.8.15
+
+CHIP AMMOUNT done
+ACT TASK
+        bug fix 5013 返回 200  done
+        bug fix n+1 天问题     done
+        query account          done
+   ...全服推送问题。            done
+   ...机器人分组推送问题        ongoing
+   推送等级的顺序 更改 Type 
+           FULLSEND(10000, "fullSend"),//钱最多 单局游戏彩金超过此值即选择全服消息推送形式
+           ROOMSEND(10001, "roomSend"),//钱最少 单局游戏彩金超过此值即选择单房间聊天框推送形式
+           ROOMVERTICALSEND(10002, "roomVerticalSend");//钱中等 单局游戏彩金超过此值即选择单房间弹屏推送形式
+   
+#### 2017.8.17
+
+推送行等级对比确认
+图片路径异常                      done
+机器人推送异常    delay
+按房间状态推送
+上线准备   ***用户任务数据初始化。
+Robot推送   delay
 
 
+#### 2017.8.21
+im上线调试     delay
+out_test db link deploy  done ---repeat vshow-config in server tomcat
+机器人推送异常    ongoing
+  
+   支付问题 delay
+   加密问题 代码实行
+   项目架构问题 
+   UI问题 
+   流程图问题 must
+   异常 must
+   
+   
+   
+#### 2017.8.28
+    处理历史数据问题
+        1.先拿vshow_id =1949684做测试    <b>pass</b> 完成4家经济公司所有认证主播8月直播天数数据的计算完善,运营可以正常显示计算 done
+            设置duration_start=end_time-start_time
+            设置timezone=家族的timezone
+        2. GetLives数据更新 delay
+        3. 机器人显示推送不急时 SendMsg    done
+        4. 上脉统计默认区间为月初到当前时间  <b>pass</b> 完成，更改完成（从默认查最近一周改到默认查当前所有月的数据）--运营后台上脉统计和家族后台上脉统计
+        5. 传文件静态文件到CDN  done 完成
+        6. 分享送活动    mind     22222
+           活动完成没有变灰 test   deploy done
+        7.webSocket delay
+        8.游戏列表没有按时间排序  pass
+        9.房间心跳开启停止记录  done
+        
+#### 2017.8.29
+    1. 确认做任务是否正确 pass done
+    2. 确认任务列表的兼容性，老版本会显示哪些  usepush=0展示 新版本<=数据库规定版本展示 pass done 
+    3. 7日欢乐颂进行中。。。  done
+    4. 1.一次性任务next_do_level>1就说明已经做；2.每日任务task_do_time=当天表示已经做；3.跨多天任务查任务开始时间到当前时间或任务最近一次的task_do_time到当前时间是否有相关的操作记录 remaind
+       对于多天任务，通过next_do_level确认是否超过次数
+   
 
-
+    
+#### 2017.9.6 
+    支付问题 delay
+       加密问题 代码实行
+       项目架构问题 
+       UI问题 
+       流程图问题 must
+       异常 must
+       vshow_id:1960966 user_id:345675 59时:57分:51秒   工时结果不一致
+       自动部署(自动化部署) must
+       Junit Test must
+       多线程与任务系统 must 
+       代码整洁
+       mysql sql  must
+       
+       
+       已经完成3大功能：1.机器人分开发送；2.增加关闭房间记录；3.增加七日欢乐颂任务；4.增加分享任务。
+#### 2017.9.11
+    Intellj maven deploy
+    maven 配置依赖第3rd part 包
+    
+#### 2017.9.13
+    后台图片监控功能显示私密聊天图片   done
+    WebSocket后台视频监控id不一致
+    用户图片列表显示 手机端调试中
+       
+#### 2017.9.14
+   用户图片列表功能上外网测试
+   运营后台图片监控增加私密房间图片上外网测试
+   Jenkis,Maven 配置
+   上麦统计默认搜索条件设置
+   WebSocket 视频监控bug
+   
 
