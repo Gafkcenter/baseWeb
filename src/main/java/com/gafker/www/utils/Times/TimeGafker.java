@@ -23,10 +23,22 @@ public class TimeGafker {
      */
     //可用的TimeZoneIdMap
     public static final Map<String, String> zoneIds = new HashMap<>();
+    public static void getGmtTime(){
+        TimeZone.setDefault(TimeZone.getTimeZone("Utc/GMT+8"));
+        Date d =new Date(1504751779*1000l);
+        System.out.println(d.getTimezoneOffset());
+        System.out.println(d);
+    }
 
+    public static int getGmtSecond() {
+        Date that = new Date();
+        long gmtMills = that.getTime() + 60000 * that.getTimezoneOffset();
+        System.out.println(gmtMills / 1000l);//1504724228 1504753052
+        return (int) (gmtMills / 1000l);
+    }
 
     public static void main(String[] args) {
-
+        getGmtSecond();
         //输出不同时区的当前String时间
 //        String stringParttern="yyyy-MM-dd HH:mm:ss";
 //        outByTimeZoneString(stringParttern,TimeZone.getDefault().getID());
@@ -52,10 +64,10 @@ public class TimeGafker {
 //        System.out.println("The day is same day:"+sameDay);
         //两时区offset间隔(在是时区同一边)--东区
         //getAllTimeZoneIds();
-        String timeString = getGmt0ToOtherTimeString("yyyy-MM-dd HH:mm:ss", getTimeZoneSecond(), "Etc/GMT+2");
-        long timeMills = getGmt0ToOtherTime(getTimeZoneSecond(), "Etc/GMT+2");
-        System.out.println("Etc/GMT+2 :" + timeString + ":" + timeMills);
-        getDateString(1501551362000l);
+//        String timeString = getGmt0ToOtherTimeString("yyyy-MM-dd HH:mm:ss", getTimeZoneSecond(), "Etc/GMT+2");
+//        long timeMills = getGmt0ToOtherTime(getTimeZoneSecond(), "Etc/GMT+2");
+//        System.out.println("Etc/GMT+2 :" + timeString + ":" + timeMills);
+//        getDateString(1501551362000l);
     }
 
     public static String getDateString(long l){
