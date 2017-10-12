@@ -18,7 +18,7 @@
     <mvc:annotation-driven conversion-service="conversionService"/>
     <!--处理静态资源-->
     <mvc:resources mapping="/static/**" location="/static/"/>
-    <mvc:resources mapping="/html/*.html" location="/"/>
+    <mvc:resources mapping="/h5_boiler/*.html" location="/"/>
     <!--利用Converter做格式转换 适用于web层与service使用-->
     <!--
     <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
