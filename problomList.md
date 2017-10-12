@@ -189,8 +189,12 @@ out_test db link deploy  done ---repeat vshow-config in server tomcat
    WebSocket 视频监控bug
 #### 2017.9.23
 	抽奖的并发问题:http://blog.csdn.net/qq_16681169/article/details/53750704
+	#### Maven 创建Java EE 项目: C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Notepad++
+	Oracle操作: http://www.cnblogs.com/ycdx2001/p/3464649.html
+	Eclipse插件安装： http://blog.csdn.net/dylan619/article/details/46839941
+	Oracle Mybatis Generatoer 分页：http://www.360doc.com/content/13/0513/12/7471983_285096815.shtml
 	
-####万物和润,创业兴邦
+####万物和润,创业兴邦 上海市徐汇区徐虹中路20号（西岸创意产业园）2号楼5楼
 ----------------------------------------------------------------------------------------------------------------------------------------------------	
 #润邦Start 2017.9.27
 #### 项目结构
@@ -218,6 +222,7 @@ out_test db link deploy  done ---repeat vshow-config in server tomcat
 			TBBS_论坛
 			TAIF_帐务
 			GAZETTEER 地名索引，地名词典;
+		1.3 接口完善 使用表与接口对应
 	2. 业务与表对应
 	3. 业务逻辑图绘制
 	---------------
