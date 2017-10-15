@@ -238,7 +238,7 @@ out_test db link deploy  done ---repeat vshow-config in server tomcat
 	 	classpath:只能加载找到的第一个资源文件.(上面只匹配了com/eloan/bu/mapper/business下的mapper文件,而com/eloan/base/mapper就陪忽略了)
 	 >>>国庆前申报：已经完成：熟悉企业商端和政府端需求;分析需求完成接口文档;规范出接口JSON格式。 下周计划：1.将接口与对应数据库表对上;2.对于业务逻辑较复杂的生成流程图;3.实现具体的业务接口。
 	>>>工作早报：本周任务：1. 理解政府与企业版数据库结构；2.接口文档返回JSON数据填充完整;3.与前端讨论对接确认接口数量和所需要的参数。
-axis2:	http://www.gafker.com:8081/axis2/services/Version?wsdl
+
 	
 
 
