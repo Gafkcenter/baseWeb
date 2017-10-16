@@ -223,7 +223,10 @@ out_test db link deploy  done ---repeat vshow-config in server tomcat
 			TAIF_帐务
 			GAZETTEER 地名索引，地名词典;
 		1.3 接口完善 使用表与接口对应
-			Junit Test 生成模拟数据
+			Junit Test 生成模拟数据    10.13完成
+			整理变更接口-表使用错误更正 10.16  完成
+			合并接口-菜单功能接口，指令功能接口与年终审核功能接口 10.16  完成
+			JSON输出结果与请求参数 10.16 等待
 	2. 业务与表对应
 	3. 业务逻辑图绘制
 	---------------
@@ -242,6 +245,8 @@ out_test db link deploy  done ---repeat vshow-config in server tomcat
 
 	
 	报价项目:http://180.169.233.35:8090/Maven_Project/IBG.do
+	Git Doc:git clone git@172.18.17.249:ibgv2/doc.git
+	
 	
 
 
