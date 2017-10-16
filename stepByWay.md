@@ -5,7 +5,6 @@
 <li>政府助手,企业助手业务逻辑</li>
 </ol>
 
-
 ####StepWByWeekWorkList-tech(每周技术提升列表)
 <ol>
 <li>Mybatis sql
@@ -64,4 +63,11 @@
 	</ul>
 </li>
 </ol>
-###
+
+# axis2:	http://www.gafker.com:8081/axis2/services/Version?wsdl
+# Spring Aop执行时间和日志：http://www.cnblogs.com/hongwz/p/5764917.html
+# Spring Aop环绕配置：http://wb284551926.iteye.com/blog/1887650
+# Spring Aop事务管理：http://blog.csdn.net/mos_wen/article/details/50774969
+ http://www.cnblogs.com/qjjazry/p/6366204.html
+# Spring Aop权限管理：http://www.cnblogs.com/mafly/p/spring_authority.html?from=singlemessage&isappinstalled=1
+# Spring Web Flow :http://blog.csdn.net/hejingyuan6/article/details/46508821

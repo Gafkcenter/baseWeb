@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+	<context:component-scan base-package="com.gafker.www"></context:component-scan>
+	<bean id="timeHandler" class="com.gafker.www.logs.TimeHandler"></bean>
+	<bean id="logHandler" class="com.gafker.www.logs.LogHandler"></bean>
+	<aop:config>
+		<!-- aspect 设置要做的额外操作处理器 -->
+		<aop:aspect id="time" ref="timeHandler" order="1">
+			<aop:pointcut id="addAllMethod" expression="execution(* com.gafker.www.service.*.*(..))" />
+			<!-- 设置通知要执行的aop方法 和 切面应用到的类或方法即执行位置~即切点 -->
+			<aop:before method="printTime" pointcut-ref="addAllMethod" />
+			<aop:after method="printTime" pointcut-ref="addAllMethod" />
+		</aop:aspect>
+		<aop:aspect id="logs" ref="logHandler" order="2">
+			<aop:pointcut id="addLogMethod" expression="execution(* com.gafker.www.service.*.*(..))" />
+			<!-- 设置通知要执行的aop方法 和 切面应用到的类或方法即执行位置~即切点 -->
+			<aop:before method="printBefore" pointcut-ref="addLogMethod" />
+			<aop:after method="printAfter" pointcut-ref="addLogMethod" />
+		</aop:aspect>
+	</aop:config>
+</beans>
