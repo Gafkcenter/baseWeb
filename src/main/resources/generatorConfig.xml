@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	<!-- mysqlConnector.jar -->
+	<classPathEntry
+	location="C:\Users\john\.m2\repository\mysql-connector-java-5.1.32.jar" />
+	<!-- mysqlLoginString -->
+	<context id="mysqlgenerator" targetRuntime="MyBatis3">
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+		connectionURL="jdbc:mysql://127.0.0.1:3306/fhadmin?useUnicode=true&amp;characterEncoding=UTF-8"
+		userId="root" password="root" />
+		<!-- bean.java 项目名/src/main/java -->
+		<javaModelGenerator targetPackage="com.gafker.www.entity"
+		targetProject="baseWeb/src/main/java" />
+		<!-- mapperSql.xml -->
+		<sqlMapGenerator targetPackage="mybatis.mappers"
+		targetProject="baseWeb/src/main/resources" />
+		<!-- mapperDaoInterface.java -->
+		<javaClientGenerator targetPackage="com.gafker.www.mapper"
+		targetProject="baseWeb/src/main/java" type="XMLMAPPER" />
+		<!--
+		<table schema="fhadmin" tableName="family"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		<table schema="fhadmin" tableName="familybookname"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		<table schema="fhadmin" tableName="familybookscontent"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		<table schema="fhadmin" tableName="familybooksection"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		<table schema="fhadmin" tableName="familybranch"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		
+		<table schema="fhadmin" tableName="familycalendar"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		-->
+		<table schema="fhadmin" tableName="pagetest"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		<!--
+		<table schema="fhadmin" tableName="familyclothesinventory"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		<table schema="fhadmin" tableName="familyclothespress"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		<table schema="fhadmin" tableName="familydict"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		<table schema="fhadmin" tableName="familyfutureorders"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		<table schema="fhadmin" tableName="familygeneration"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		<table schema="fhadmin" tableName="familygeo"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		<table schema="fhadmin" tableName="familymessageskinds"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		<table schema="fhadmin" tableName="familynames"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		<table schema="fhadmin" tableName="familynews"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		<table schema="fhadmin" tableName="familyphoto"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		<table schema="fhadmin" tableName="familyproduct"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		<table schema="fhadmin" tableName="familysize"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		-->
+		<table schema="fhadmin" tableName="wo_timesTable" domainObjectName="TimesTable" enableCountByExample="false"
+			   enableDeleteByExample="true" enableSelectByExample="true"
+			   enableUpdateByExample="true"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		<!--
+		<table schema="fhadmin" tableName="familytraceability"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		<table schema="fhadmin" tableName="familyworkhelp"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		<table schema="fhadmin" tableName="feedback"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		<table schema="fhadmin" tableName="happayteachersdays"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		<table schema="fhadmin" tableName="sys_dict"><generatedKey column="id" sqlStatement="JDBC"/></table>	
+		<table schema="fhadmin" tableName="sys_dict_type"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		<table schema="fhadmin" tableName="sys_geo"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		<table schema="fhadmin" tableName="sys_jacket_size"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		<table schema="fhadmin" tableName="sys_shoes_size"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		<table schema="fhadmin" tableName="userattribute"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		<table schema="fhadmin" tableName="userbodysize"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		-->
+		<!-- Shiro 5个表完成-->
+		<!-- tableName="userattribute" 
+		<table schema="fhadmin" tableName="userrole"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		<table schema="fhadmin" tableName="userpermission"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		<table schema="fhadmin" tableName="userfkrole"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		<table schema="fhadmin" tableName="userfkpermission"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		-->
+		<!-- Phone System 5个表完成
+		<table schema="fhadmin" tableName="phoneseven"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		<table schema="fhadmin" tableName="phonenumberlist"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		tableName="userattribute" 
+		<table schema="fhadmin" tableName="phoneprefix"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		<table schema="fhadmin" tableName="phoneuseuser"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		<table schema="fhadmin" tableName="phonecvfpath"><generatedKey column="id" sqlStatement="JDBC"/></table>
+		-->
+	</context>
+</generatorConfiguration>
