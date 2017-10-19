@@ -245,7 +245,12 @@ out_test db link deploy  done ---repeat vshow-config in server tomcat
 
 	
 	报价项目:http://180.169.233.35:8090/Maven_Project/IBG.do
+	
+	Git Price:git clone git@172.18.17.249:ibg.git
 	Git Doc:git clone git@172.18.17.249:ibgv2/doc.git
+	Git Test:git clone git@180.169.233.35:test1.git
+	幕墙云：git clone git@172.18.17.249:ibgv2/ibgv2.git
+	
 	
 	
 
