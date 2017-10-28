@@ -24,3 +24,6 @@ BEGIN
 retval := utl_raw.cast_to_raw(DBMS_OBFUSCATION_TOOLKIT.MD5(INPUT_STRING => passwd)) ;
 RETURN retval;
 END;
+
+Linux Git配置
+http://www.cnblogs.com/dee0912/p/5815267.html
