@@ -1,18 +1,18 @@
-1.计算每个人的总成绩并排名 
+--1.计算每个人的总成绩并排名
 
-select name,sum(score) as allscore from stuscore group by name order by allscore 
+select name,sum(score) as allscore from stuscore group by name order by allscore;
 
-2.计算每个人的总成绩并排名 
+--2.计算每个人的总成绩并排名
 
-select distinct t1.name,t1.stuid,t2.allscore from stuscore t1,( select stuid,sum(score) as allscore from stuscore group by stuid)t2where t1.stuid=t2.stuidorder by t2.allscore desc 
+select distinct t1.name,t1.stuid,t2.allscore from stuscore t1,( select stuid,sum(score) as allscore from stuscore group by stuid) t2 where t1.stuid=t2.stuid order by t2.allscore desc;
 
-3. 计算每个人单科的最高成绩 
+--3. 计算每个人单科的最高成绩
 
-select t1.stuid,t1.name,t1.subject,t1.score from stuscore t1,(select stuid,max(score) as maxscore from stuscore group by stuid) t2where t1.stuid=t2.stuid and t1.score=t2.maxscore 
+select t1.stuid,t1.name,t1.subject,t1.score from stuscore t1,(select stuid,max(score) as maxscore from stuscore group by stuid) t2 where t1.stuid=t2.stuid and t1.score=t2.maxscore;
 
-4.计算每个人的平均成绩 
+--4.计算每个人的平均成绩
 
-select distinct t1.stuid,t1.name,t2.avgscore from stuscore t1,(select stuid,avg(score) as avgscore from stuscore group by stuid) t2where t1.stuid=t2.stuid 
+select distinct t1.stuid,t1.name,t2.avgscore from stuscore t1,(select stuid,avg(score) as avgscore from stuscore group by stuid) t2 where t1.stuid=t2.stuid;
 
 5.列出各门课程成绩最好的学生 
 
@@ -1290,3 +1290,1409 @@ WHERE second_column=’Copy Me!’
 例如，假设你想从一个表中删除一个字段。使用SELECT INTO 语句，你可以创建该表的一个拷贝，但不包含要删除的字段。这使你既删除了该字段，又保留了不想删除的数据。
  
 如果你想改变一个字段的数据类型，你可以创建一个包含正确数据类型字段的新表。创建好该表后，你就可以结合使用UPDATE语句和SELECT 语句，把原来表中的所有数据拷贝到新表中。通过这种方法，你既可以修改表的结构，又能保存原有的数据。
+
+
+1.create user username identified by password;//建用户名和密码oracle ,oracle
+2.grant connect,resource,dba to username;//授权 grant connect,resource,dba,sysdba to username;
+3.connect username/password//进入。
+4.select table_name,column_name from user_tab_columns where table_name='mview_log';//查询表中的表名，字段名等等。
+5. 如何执行脚本SQL文件? SQL>@PATH/filename.sql;
+6.Oracle oledb 提供者在command中执行多条SQL语句与SQL SERVER有少许差别,SQL Server只需使用";"分割多条SQL语句,而Oracle需要遵守ORACLE调用规范,即除分号分割外,还需以begin /end;包围语句体.
+使用C#描述应如下所示:
+this.oleDbCommand1.CommandText = "begin INSERT INTO GROUP_INFO (GROUP_ID, GROUP_NAME) VALUES (1, \'2\'); INSERT INTO GROUP_INFO(GROUP_ID, GROUP_NAME) VALUES (2, \'2\'); end;";
+7.查询用户下的所有表 select distinct table_name from user_tab_columns;
+8.如何搜索出前N条记录？Select a.*,rownum from (select * from cardkind order by cardkind ) a where rownum<n
+9.查找用户下的所有表：select * from tab;
+2、显示当前连接用户
+show user
+--3、查看系统拥有哪些用户
+select * from all_users;
+--4、新建用户并授权
+create user a identified by a;(默认建在SYSTEM表空间下)
+grant connect,resource to a;
+5、连接到新用户
+conn a/a
+6、查询当前用户下所有对象
+select * from tab;
+7、建立第一个表
+create table a(a number);
+8、查询表结构
+desc a
+9、插入新记录
+insert into a values(1);
+10、查询记录
+select * from a;
+11、更改记录
+update a set a=2;
+12、删除记录
+delete from a;
+13、回滚
+roll;
+rollback;
+14、提交
+commit;
+select * from
+(select t.*,dense_rank() over (order by cardkind) rank from cardkind t)
+where rank = 2;
+46. 如何在字符串里加回车?
+select 'Welcome to visit'||chr(10)||'www.CSDN.NET' from dual ;
+47. 中文是如何排序的？
+Oracle9i之前，中文是按照二进制编码进行排序的。
+在oracle9i中新增了按照拼音、部首、笔画排序功能。设置NLS_SORT值
+SCHINESE_RADICAL_M 按照部首（第一顺序）、笔划（第二顺序）排序
+SCHINESE_STROKE_M 按照笔划（第一顺序）、部首（第二顺序）排序
+SCHINESE_PINYIN_M 按照拼音排序
+48. Oracle8i中对象名可以用中文吗？
+可以
+49. 如何改变WIN中SQL*Plus启动选项？
+SQL*PLUS自身的选项设置我们可以在$ORACLE_HOME/sqlplus/admin/glogin.sql中设置。
+50. 怎样修改oracel数据库的默认日期?
+alter session set nls_date_format='yyyymmddhh24miss';
+OR
+可以在init.ora中加上一行
+nls_date_format='yyyymmddhh24miss'
+51. 如何将小表放入keep池中?
+alter table xxx storage(buffer_pool keep);
+52. 如何检查是否安装了某个patch?
+check that oraInventory
+53. 如何使select语句使查询结果自动生成序号?
+select rownum,COL from table;
+54. 如何知道数据裤中某个表所在的tablespace?
+select tablespace_name from user_tables where table_name='TEST';
+select * from user_tables中有个字段TABLESPACE_NAME，（oracle）;
+select * from dba_segments where …;
+55. 怎么可以快速做一个和原表一样的备份表?
+create table new_table as (select * from old_table);
+55. 怎么在sqlplus下修改procedure?
+select line,trim(text) t from user_source where name ='A' order by line;
+56. 怎样解除PROCEDURE被意外锁定?
+alter system kill session ,把那个session给杀掉，不过你要先查出她的session id
+or
+把该过程重新改个名字就可以了。
+57. SQL Reference是个什么东西？
+是一本sql的使用手册，包括语法、函数等等，oracle官方网站的文档中心有下载.
+58. 如何查看数据库的状态?
+unix下
+ps -ef | grep ora
+windows下
+看服务是否起来
+是否可以连上数据库
+59. 请问如何修改一张表的主键?
+alter table aaa
+drop constraint aaa_key ;
+alter table aaa
+add constraint aaa_key primary key(a1,b1) ;
+60. 改变数据文件的大小?
+用 ALTER DATABASE .... DATAFILE .... ;
+手工改变数据文件的大小，对于原来的 数据文件有没有损害。
+61. 怎样查看ORACLE中有哪些程序在运行之中？
+查看v$sessions表
+62. 怎么可以看到数据库有多少个tablespace?
+select * from dba_tablespaces;
+63. 如何修改oracle数据库的用户连接数？
+修改initSID.ora，将process加大，重启数据库.
+64. 如何查出一条记录的最后更新时间?
+可以用logminer 察看
+65. 如何在PL/SQL中读写文件？
+UTL_FILE包允许用户通过PL/SQL读写操作系统文件。
+66. 怎样把"&"放入一条记录中？
+insert into a values (translate ('at{&}t','at{}','at'));
+67. EXP 如何加ＱＵＥＲＹ参数？
+EXP USER/PASS FILE=A.DMP TABLES(BSEMPMS)
+QUERY='"WHERE EMP_NO=\'S09394\'\" ﹔
+68. 关于oracle8i支持简体和繁体的字符集问题？
+ZHS16GBK可以支
+69. Data Guard是什么软件？
+就是Standby的换代产品
+70. 如何创建SPFILE?
+connect / as sysdba
+select * from v$version;
+create pfile from spfile;
+CREATE SPFILE FROM PFILE='E:\ora9i\admin\eygle\pfile\init.ora';
+文件已创建。
+CREATE SPFILE='E:\ora9i\database\SPFILEEYGLE.ORA' FROM
+PFILE='E:\ora9i\admin\eygle\pfile\init.ora';
+文件已创建。
+71. 内核参数的应用?
+shmmax
+含义：这个设置并不决定究竟Oracle数据库或者操作系统使用多少物理内存，只决定了
+最多可以使用的内存数目。这个设置也不影响操作系统的内核资源。
+设置方法：0.5*物理内存
+例子：Set shmsys:shminfo_shmmax=10485760
+shmmin
+含义：共享内存的最小大小。
+设置方法：一般都设置成为1。
+例子：Set shmsys:shminfo_shmmin=1：
+shmmni
+含义：系统中共享内存段的最大个数。
+例子：Set shmsys:shminfo_shmmni=100
+shmseg
+含义：每个用户进程可以使用的最多的共享内存段的数目。
+例子：Set shmsys:shminfo_shmseg=20：
+semmni
+含义：系统中semaphore identifierer的最大个数。
+设置方法：把这个变量的值设置为这个系统上的所有Oracle的实例的init.ora中的最大
+的那个processes的那个值加10。
+例子：Set semsys:seminfo_semmni=100
+semmns
+含义：系统中emaphores的最大个数。
+设置方法：这个值可以通过以下方式计算得到：各个Oracle实例的initSID.ora里边的
+processes的值的总和（除去最大的Processes参数）＋最大的那个Processes×2＋10×
+Oracle实例的个数。
+例子：Set semsys:seminfo_semmns=200
+semmsl:
+含义：一个set中semaphore的最大个数。
+设置方法：设置成为10＋所有Oracle实例的InitSID.ora中最大的Processes的值。
+例子：Set semsys:seminfo_semmsl=-200
+72. 怎样查看哪些用户拥有SYSDBA、SYSOPER权限？
+SQL>conn sys/change_on_install
+SQL>select * from V_$PWFILE_USERS;
+73. 如何单独备份一个或多个表？
+exp 用户/密码 tables=(表1,…,表2)
+74. 如何单独备份一个或多个用户？
+exp system/manager owner=(用户1,用户2,…,用户n) file=导出文件
+75. 如何对CLOB字段进行全文检索？
+SELECT * FROM A WHERE dbms_lob.instr(a.a,'K',1,1)>0; 76. 如何显示当前连接用户?
+SHOW USER
+77. 如何查看数据文件放置的路径 ?
+col file_name format a50
+select tablespace_name,file_id,bytes/1024/1024,file_name from dba_data_files
+order by file_id;
+78. 如何查看现有回滚段及其状态 ?
+col segment format a30
+SELECT SEGMENT_NAME,OWNER,TABLESPACE_NAME,SEGMENT_ID,FILE _ID,STATUS FROM
+DBA_ROLLBACK_SEGS
+79. 如何改变一个字段初始定义的Check范围？
+alter table xxx drop constraint constraint_name;
+之后再创建新约束:
+alter table xxx add constraint constraint_name check();
+80. Oracle常用系统文件有哪些？
+通过以下视图显示这些文件信息：v$database,v$datafile,v$logfile v$controlfile
+v$parameter;
+81. 内连接INNER JOIN?
+Select a.* from bsempms a,bsdptms b where a.dpt_no=b.dpt_no;
+82. 如何外连接?
+Select a.* from bsempms a,bsdptms b where a.dpt_no=b.dpt_no(+);
+Select a.* from bsempms a,bsdptms b wherea.dpt_no(+)=b.dpt_no;
+83. 如何执行脚本SQL文件?
+SQL>@$PATH/filename.sql;
+84. 如何快速清空一个大表?
+SQL>truncate table table_name;
+85. 如何查有多少个数据库实例?
+SQL>SELECT * FROM V$INSTANCE;
+86. 如何查询数据库有多少表?
+SQL>select * from all_tables;
+87. 如何测试SQL语句执行所用的时间?
+SQL>set timing on ;
+SQL>select * from tablename;
+88. CHR()的反函数是?
+ASCII()
+SELECT CHAR(65) FROM DUAL;
+SELECT ASCII('A') FROM DUAL;
+89. 字符串的连接
+SELECT CONCAT(COL1,COL2) FROM TABLE ;
+SELECT COL1||COL2 FROM TABLE ;
+90. 怎么把select出来的结果导到一个文本文件中？
+SQL>SPOOL C:\ABCD.TXT;
+SQL>select * from table;
+SQL >spool off;
+91. 怎样估算SQL执行的I/O数 ?
+SQL>SET AUTOTRACE ON ;
+SQL>SELECT * FROM TABLE;
+OR
+SQL>SELECT * FROM v$filestat ;
+可以查看IO数
+92. 如何在sqlplus下改变字段大小?
+alter table table_name modify (field_name varchar2(100));
+改大行，改小不行（除非都是空的）
+93. 如何查询某天的数据?
+select * from table_name where trunc(日期字段)＝to_date('2003-05-02','yyyy-mm-
+dd');
+94. sql 语句如何插入全年日期？
+create table BSYEAR (d date);
+insert into BSYEAR
+select to_date('20030101','yyyymmdd')+rownum-1
+from all_objects
+where rownum <= to_char(to_date('20031231','yyyymmdd'),'ddd');
+95. 如果修改表名?
+alter table old_table_name rename to new_table_name;
+96. 如何取得命令的返回状态值？
+sqlcode=0
+97. 如何知道用户拥有的权限?
+SELECT * FROM dba_sys_privs ;
+98. 从网上下载的ORACLE9I与市场上卖的标准版有什么区别？
+从功能上说没有区别，只不过oracle公司有明文规定；从网站上下载的oracle产品不得用于
+商业用途，否则侵权。
+99. 怎样判断数据库是运行在归档模式下还是运行在非归档模式下？
+进入dbastudio，历程--〉数据库---〉归档查看。
+100. sql>startup pfile和ifile,spfiled有什么区别？
+pfile就是Oracle传统的初始化参数文件，文本格式的。
+ifile类似于c语言里的include，用于把另一个文件引入
+spfile是9i里新增的并且是默认的参数文件，二进制格式
+startup后应该只可接pfile
+101. 如何搜索出前N条记录？
+SELECT * FROM empLOYEE WHERE ROWNUM < n ORDER BY empno;
+102. 如何知道机器上的Oracle支持多少并发用户数?
+SQL>conn internal ;
+SQL>show parameter processes ;
+103. db_block_size可以修改吗?
+一般不可以﹐不建议这样做的。
+104. 如何统计两个表的记录总数?
+select (select count(id) from aa)+(select count(id) from bb) 总数 from dual;
+105. 怎样用Sql语句实现查找一列中第N大值？
+select * from
+(select t.*,dense_rank() over (order by sal) rank from employee)
+where rank = N;
+106. 如何在给现有的日期加上2年？(
+select add_months(sysdate,24) from dual;
+107. USED_UBLK为负值表示什么意思?
+It is "harmless".
+108. Connect string是指什么?
+应该是tnsnames.ora中的服务名后面的内容
+109. 怎样扩大REDO LOG的大小？
+建立一个临时的redolog组，然后切换日志，删除以前的日志，建立新的日志。
+110. tablespace 是否不能大于4G?
+没有限制.
+111. 返回大于等于N的最小整数值?
+SELECT CEIL(N) FROM DUAL;
+112. 返回小于等于N的最小整数值?
+SELECT FLOOR(N) FROM DUAL;
+113. 返回当前月的最后一天?
+SELECT LAST_DAY(SYSDATE) FROM DUAL;
+114. 如何不同用户间数据导入?
+IMP SYSTEM/MANAGER FILE=AA.DMP FROMUSER=USER_OLD TOUSER=USER_NEW ROWS=Y INDEXES=Y
+
+115. 如何找数据库表的主键字段的名称?
+SQL>SELECT * FROM user_constraints WHERE CONSTRAINT_TYPE='P' and
+table_name='TABLE_NAME';
+116. 两个结果集互加的函数?
+SQL>SELECT * FROM BSEMPMS_OLD INTERSECT SELECT * FROM BSEMPMS_NEW;
+SQL>SELECT * FROM BSEMPMS_OLD UNION SELECT * FROM BSEMPMS_NEW;
+SQL>SELECT * FROM BSEMPMS_OLD UNION ALL SELECT * FROM BSEMPMS_NEW;
+117. 两个结果集互减的函数?
+SQL>SELECT * FROM BSEMPMS_OLD MINUS SELECT * FROM BSEMPMS_NEW;
+118. 如何配置Sequence?
+建sequence seq_custid
+create sequence seq_custid start 1 incrememt by 1;
+建表时:
+create table cust
+{ cust_id smallint not null,
+...}
+insert 时:
+insert into table cust
+values( seq_cust.nextval, ...)
+日期的各部分的常用的的写法
+119>.取时间点的年份的写法:
+SELECT TO_CHAR(SYSDATE,'YYYY') FROM DUAL;
+120>.取时间点的月份的写法:
+SELECT TO_CHAR(SYSDATE,'MM') FROM DUAL;
+121>.取时间点的日的写法:
+SELECT TO_CHAR(SYSDATE,'DD') FROM DUAL;
+122>.取时间点的时的写法:
+SELECT TO_CHAR(SYSDATE,'HH24') FROM DUAL;
+123>.取时间点的分的写法:
+SELECT TO_CHAR(SYSDATE,'MI') FROM DUAL;
+124>.取时间点的秒的写法:
+SELECT TO_CHAR(SYSDATE,'SS') FROM DUAL;
+125>.取时间点的日期的写法:
+SELECT TRUNC(SYSDATE) FROM DUAL;
+126>.取时间点的时间的写法:
+SELECT TO_CHAR(SYSDATE,'HH24:MI:SS') FROM DUAL;
+127>.日期,时间形态变为字符形态
+SELECT TO_CHAR(SYSDATE) FROM DUAL;
+128>.将字符串转换成日期或时间形态:
+SELECT TO_DATE('2003/08/01') FROM DUAL; 129>.返回参数的星期几的写法:
+SELECT TO_CHAR(SYSDATE,'D') FROM DUAL;
+130>.返回参数一年中的第几天的写法:
+SELECT TO_CHAR(SYSDATE,'DDD') FROM DUAL;
+131>.返回午夜和参数中指定的时间值之间的秒数的写法:
+SELECT TO_CHAR(SYSDATE,'SSSSS') FROM DUAL;
+132>.返回参数中一年的第几周的写法:
+SELECT TO_CHAR(SYSDATE,'WW') FROM DUAL;
+虚拟字段
+133. CURRVAL 和 nextval
+为表创建序列
+CREATE SEQUENCE EMPSEQ ... ;
+SELECT empseq.currval FROM DUAL ;
+自动插入序列的数值
+INSERT INTO emp
+VALUES (empseq.nextval, 'LEWIS', 'CLERK',
+7902, SYSDATE, 1200, NULL, 20) ;
+134. ROWNUM
+按设定排序的行的序号
+SELECT * FROM emp WHERE ROWNUM < 10 ;
+135. ROWID
+返回行的物理地址
+SELECT ROWID, ename FROM emp WHERE deptno = 20 ;
+136. 将N秒转换为时分秒格式？
+set serverout on
+declare
+N number := 1000000;
+ret varchar2(100);
+begin
+ret := trunc(n/3600) || '小时' || to_char(to_date(mod(n,3600),'sssss'),'fmmi"分
+"ss"秒"') ;
+dbms_output.put_line(ret);
+end;
+137. 如何查询做比较大的排序的进程？
+SELECT b.tablespace, b.segfile#, b.segblk#, b.blocks, a.sid, a.serial#,
+a.username, a.osuser, a.status
+FROM v$session a,v$sort_usage b
+WHERE a.saddr = b.session_addr
+ORDER BY b.tablespace, b.segfile#, b.segblk#, b.blocks ;
+138. 如何查询做比较大的排序的进程的SQL语句？
+select /*+ ORDERED */ sql_text from v$sqltext a
+where a.hash_value = (
+select sql_hash_value from v$session b
+where b.sid = &sid and b.serial# = &serial)
+order by piece asc ;
+139. 如何查找重复记录？
+SELECT * FROM TABLE_NAME
+WHERE ROWID!=(SELECT MAX(ROWID) FROM TABLE_NAME D
+WHERE TABLE_NAME.COL1=D.COL1 AND TABLE_NAME.COL2=D.COL2);
+140. 如何删除重复记录？
+DELETE FROM TABLE_NAME
+WHERE ROWID!=(SELECT MAX(ROWID) FROM TABLE_NAME D
+WHERE TABLE_NAME.COL1=D.COL1 AND TABLE_NAME.COL2=D.COL2);
+141. 如何快速编译所有视图？
+SQL >SPOOL VIEW1.SQL
+SQL >SELECT 'ALTER VIEW '||TNAME||'
+COMPILE;' FROM TAB;
+SQL >SPOOL OFF
+然后执行VIEW1.SQL即可。
+SQL >@VIEW1.SQL;
+142. ORA-01555 SNAPSHOT TOO OLD的解决办法
+增加MINEXTENTS的值，增加区的大小，设置一个高的OPTIMAL值。
+143. 事务要求的回滚段空间不够，表现为表空间用满（ORA-01560错误），回滚段扩展到达
+参数 MAXEXTENTS的值（ORA-01628）的解决办法.
+向回滚段表空间添加文件或使已有的文件变大；增加MAXEXTENTS的值。
+144. 如何加密ORACLE的存储过程？
+下列存储过程内容放在AA.SQL文件中
+create or replace procedure testCCB(i in number) as
+begin
+dbms_output.put_line('输入参数是'||to_char(i));
+end;
+SQL>wrap iname=a.sql;
+PL/SQL Wrapper: Release 8.1.7.0.0 - Production on Tue Nov 27 22:26:48 2001
+Copyright (c) Oracle Corporation 1993, 2000. All Rights Reserved.
+Processing AA.sql to AA.plb
+运行AA.plb
+@AA.plb ;
+145. 如何监控事例的等待？
+select event,sum(decode(wait_Time,0,0,1)) "Prev",
+sum(decode(wait_Time,0,1,0)) "Curr",count(*) "Tot"
+from v$session_Wait
+group by event order by 4;
+146. 如何回滚段的争用情况？
+select name, waits, gets, waits/gets "Ratio"
+from v$rollstat C, v$rollname D
+where C.usn = D.usn;
+147. 如何监控表空间的 I/O 比例？
+select B.tablespace_name name,B.file_name "file",A.phyrds pyr,
+A.phyblkrd pbr,A.phywrts pyw, A.phyblkwrt pbw
+from v$filestat A, dba_data_files B
+where A.file# = B.file_id
+order by B.tablespace_name;
+148. 如何监控文件系统的 I/O 比例？
+select substr(C.file#,1,2) "#", substr(C.name,1,30) "Name",
+C.status, C.bytes, D.phyrds, D.phywrts
+from v$datafile C, v$filestat D
+where C.file# = D.file#;
+149. 如何在某个用户下找所有的索引？
+select user_indexes.table_name, user_indexes.index_name,uniqueness, column_name
+from user_ind_columns, user_indexes
+where user_ind_columns.index_name = user_indexes.index_name
+and user_ind_columns.table_name = user_indexes.table_name
+order by user_indexes.table_type, user_indexes.table_name,
+user_indexes.index_name, column_position;
+150. 如何监控 SGA 的命中率？
+select a.value + b.value "logical_reads", c.value "phys_reads",
+round(100 * ((a.value+b.value)-c.value) / (a.value+b.value)) "BUFFER HIT RATIO"
+from v$sysstat a, v$sysstat b, v$sysstat c
+where a.statistic# = 38 and b.statistic# = 39
+and c.statistic# = 40;
+151. 如何监控 SGA 中字典缓冲区的命中率？
+select parameter, gets,Getmisses , getmisses/(gets+getmisses)*100 "miss ratio",
+(1-(sum(getmisses)/ (sum(gets)+sum(getmisses))))*100 "Hit ratio"
+from v$rowcache
+where gets+getmisses <>0
+group by parameter, gets, getmisses;
+152. 如何监控 SGA 中共享缓存区的命中率，应该小于1% ？
+select sum(pins) "Total Pins", sum(reloads) "Total Reloads",
+sum(reloads)/sum(pins) *100 libcache
+from v$librarycache;
+select sum(pinhits-reloads)/sum(pins) "hit radio",sum(reloads)/sum(pins) "reload
+percent"
+from v$librarycache;
+153. 如何显示所有数据库对象的类别和大小？
+select count(name) num_instances ,type ,sum(source_size) source_size ,
+sum(parsed_size) parsed_size ,sum(code_size) code_size ,sum(error_size)
+error_size,
+sum(source_size) +sum(parsed_size) +sum(code_size) +sum(error_size) size_required
+from dba_object_size
+group by type order by 2;
+154. 监控 SGA 中重做日志缓存区的命中率，应该小于1%
+SELECT name, gets, misses, immediate_gets, immediate_misses,
+Decode(gets,0,0,misses/gets*100) ratio1,
+Decode(immediate_gets+immediate_misses,0,0,
+immediate_misses/(immediate_gets+immediate_misses) *100) ratio2
+FROM v$latch WHERE name IN ('redo allocation', 'redo copy');
+155. 监控内存和硬盘的排序比率，最好使它小于 .10，增加 sort_area_size
+SELECT name, value FROM v$sysstat WHERE name IN ('sorts (memory)', 'sorts
+(disk)');
+156. 如何监控当前数据库谁在运行什么SQL语句？
+SELECT osuser, username, sql_text from v$session a, v$sqltext b
+where a.sql_address =b.address order by address, piece;
+157. 如何监控字典缓冲区？
+SELECT (SUM(PINS - RELOADS)) / SUM(PINS) "LIB CACHE" FROM V$LIBRARYCACHE;
+SELECT (SUM(GETS - GETMISSES - USAGE - FIXED)) / SUM(GETS) "ROW CACHE" FROM
+V$ROWCACHE;
+SELECT SUM(PINS) "EXECUTIONS", SUM(RELOADS) "CACHE MISSES WHILE EXECUTING" FROM
+V$LIBRARYCACHE;
+后者除以前者,此比率小于1%,接近0%为好。
+SELECT SUM(GETS) "DICTIONARY GETS",SUM(GETMISSES) "DICTIONARY CACHE GET MISSES"
+FROM V$ROWCACHE
+158. 监控 MTS
+select busy/(busy+idle) "shared servers busy" from v$dispatcher;
+此值大于0.5时，参数需加大
+select sum(wait)/sum(totalq) "dispatcher waits" from v$queue where
+type='dispatcher';
+select count(*) from v$dispatcher;
+select servers_highwater from v$mts;
+servers_highwater接近mts_max_servers时，参数需加大
+159. 如何知道当前用户的ID号?
+SQL>SHOW USER;
+OR
+SQL>select user from dual;
+160. 如何查看碎片程度高的表?
+SELECT segment_name table_name , COUNT(*) extents
+FROM dba_segments WHERE owner NOT IN ('SYS', 'SYSTEM') GROUP BY segment_name
+HAVING COUNT(*) = (SELECT MAX( COUNT(*) ) FROM dba_segments GROUP BY
+segment_name);
+162. 如何知道表在表空间中的存储情况?
+select segment_name,sum(bytes),count(*) ext_quan from dba_extents where
+tablespace_name='&tablespace_name' and segment_type='TABLE' group by
+tablespace_name,segment_name;
+163. 如何知道索引在表空间中的存储情况?
+select segment_name,count(*) from dba_extents where segment_type='INDEX' and
+owner='&owner'
+group by segment_name;
+164、如何知道使用CPU多的用户session?
+11是cpu used by this session
+select a.sid,spid,status,substr(a.program,1,40)
+prog,a.terminal,osuser,value/60/100 value
+from v$session a,v$process b,v$sesstat c
+where c.statistic#=11 and c.sid=a.sid and a.paddr=b.addr order by value desc;
+165. 如何知道监听器日志文件?
+以8I为例
+$ORACLE_HOME/NETWORK/LOG/LISTENER.LOG
+166. 如何知道监听器参数文件?
+以8I为例
+$ORACLE_HOME/NETWORK/ADMIN/LISTENER.ORA
+167. 如何知道TNS 连接文件?
+以8I为例
+$ORACLE_HOME/NETWORK/ADMIN/TNSNAMES.ORA
+168. 如何知道Sql*Net 环境文件?
+以8I为例
+$ORACLE_HOME/NETWORK/ADMIN/SQLNET.ORA
+169. 如何知道警告日志文件?
+以8I为例
+$ORACLE_HOME/ADMIN/SID/BDUMP/SIDALRT.LOG
+170. 如何知道基本结构?
+以8I为例
+$ORACLE_HOME/RDBMS/ADMIN/STANDARD.SQL
+171. 如何知道建立数据字典视图?
+以8I为例
+$ORACLE_HOME/RDBMS/ADMIN/CATALOG.SQL
+172. 如何知道建立审计用数据字典视图?
+以8I为例
+$ORACLE_HOME/RDBMS/ADMIN/CATAUDIT.SQL
+173. 如何知道建立快照用数据字典视图?
+以8I为例
+$ORACLE_HOME/RDBMS/ADMIN/CATSNAP.SQL
+本讲主要讲的是SQL语句的优化方法! 主要基于ORACLE9I的.
+174. /*+ALL_ROWS*/
+表明对语句块选择基于开销的优化方法,并获得最佳吞吐量,使资源消耗最小化.
+例如:
+SELECT /*+ALL+_ROWS*/ EMP_NO,EMP_NAM,DAT_IN FROM BSEMPMS WHERE EMP_NO='CCBZZP';
+175. /*+FIRST_ROWS*/
+表明对语句块选择基于开销的优化方法,并获得最佳响应时间,使资源消耗最小化.
+例如:
+SELECT /*+FIRST_ROWS*/ EMP_NO,EMP_NAM,DAT_IN FROM BSEMPMS WHERE EMP_NO='CCBZZP'; 176. /*+CHOOSE*/
+表明如果数据字典中有访问表的统计信息,将基于开销的优化方法,并获得最佳的吞吐量;
+表明如果数据字典中没有访问表的统计信息,将基于规则开销的优化方法;
+例如:
+SELECT /*+CHOOSE*/ EMP_NO,EMP_NAM,DAT_IN FROM BSEMPMS WHERE EMP_NO='CCBZZP';
+177. /*+RULE*/
+表明对语句块选择基于规则的优化方法.
+例如:
+SELECT /*+ RULE */ EMP_NO,EMP_NAM,DAT_IN FROM BSEMPMS WHERE EMP_NO='CCBZZP';
+178. /*+FULL(TABLE)*/
+表明对表选择全局扫描的方法.
+例如:
+SELECT /*+FULL(A)*/ EMP_NO,EMP_NAM FROM BSEMPMS A WHERE EMP_NO='CCBZZP';
+179. /*+ROWID(TABLE)*/
+提示明确表明对指定表根据ROWID进行访问.
+例如:
+SELECT /*+ROWID(BSEMPMS)*/ * FROM BSEMPMS WHERE ROWID>='AAAAAAAAAAAAAA'
+AND EMP_NO='CCBZZP';
+180. /*+CLUSTER(TABLE)*/
+提示明确表明对指定表选择簇扫描的访问方法,它只对簇对象有效.
+例如:
+SELECT /*+CLUSTER */ BSEMPMS.EMP_NO,DPT_NO FROM BSEMPMS,BSDPTMS
+WHERE DPT_NO='TEC304' AND BSEMPMS.DPT_NO=BSDPTMS.DPT_NO;
+181. /*+INDEX(TABLE INDEX_NAME)*/
+表明对表选择索引的扫描方法.
+例如:
+SELECT /*+INDEX(BSEMPMS SEX_INDEX) USE SEX_INDEX BECAUSE THERE ARE FEWMALE
+BSEMPMS */ FROM BSEMPMS WHERE SEX='M';
+182. /*+INDEX_ASC(TABLE INDEX_NAME)*/
+表明对表选择索引升序的扫描方法.
+
+
+1.ASCII 返回与指定的字符对应的十进制数;
+select ascii('A') A,ascii('a') a,ascii('0') zero,ascii(' ') space from dual;
+A         A      ZERO     SPACE
+--------- --------- --------- ---------
+65        97        48        32
+2.CHR 给出整数,返回对应的字符;
+select chr(54740) zhao,chr(65) chr65 from dual;
+ZH C
+-- -
+赵 A
+3.CONCAT 连接两个字符串;
+select concat('010-','88888888')||'转23'  高乾竞电话 from dual;
+高乾竞电话
+----------------
+010-88888888转23
+4.INITCAP 返回字符串并将字符串的第一个字母变为大写;
+select initcap('smith') upp from dual;
+UPP
+-----
+Smith
+5.INSTR(C1,C2,I,J) 在一个字符串中搜索指定的字符,返回发现指定的字符的位置;
+C1    被搜索的字符串
+C2    希望搜索的字符串
+I     搜索的开始位置,默认为1
+J     出现的位置,默认为1
+select instr('oracle traning','ra',1,2) instring from dual;
+INSTRING
+---------
+9
+6.LENGTH 返回字符串的长度;
+select name,length(name),addr,length(addr),sal,length(to_char(sal)) from .nchar_tst;
+NAME   LENGTH(NAME) ADDR             LENGTH(ADDR)       SAL LENGTH(TO_CHAR(SAL))
+------ ------------ ---------------- ------------ --------- --------------------
+高乾竞            3 北京市海锭区                6   9999.99                    7
+7.LOWER 返回字符串,并将所有的字符小写
+select lower('AaBbCcDd')AaBbCcDd from dual;
+AABBCCDD
+--------
+aabbccdd
+8.UPPER 返回字符串,并将所有的字符大写
+select upper('AaBbCcDd') upper from dual;
+UPPER
+--------
+AABBCCDD
+9.RPAD和LPAD(粘贴字符)
+RPAD  在列的右边粘贴字符
+LPAD  在列的左边粘贴字符
+select lpad(rpad('gao',10,'*'),17,'*')from dual;
+LPAD(RPAD('GAO',1
+-----------------
+*******gao*******
+不够字符则用*来填满
+10.LTRIM和RTRIM
+LTRIM  删除左边出现的字符串
+RTRIM  删除右边出现的字符串
+select ltrim(rtrim('   gao qian jing   ',' '),' ') from dual;
+LTRIM(RTRIM('
+-------------
+gao qian jing
+11.SUBSTR(string,start,count)
+取子字符串,从start开始,取count个
+select substr('13088888888',3,8) from dual;
+SUBSTR('
+--------
+08888888
+12.REPLACE('string','s1','s2')
+string   希望被替换的字符或变量
+s1       被替换的字符串
+s2       要替换的字符串
+select replace('he love you','he','i') from dual;
+REPLACE('HELOVEYOU','HE','I')
+------------------------------
+i love you
+13.SOUNDEX 返回一个与给定的字符串读音相同的字符串
+create table table1(xm varchar(8));
+insert into table1 values('weather');
+insert into table1 values('wether');
+insert into table1 values('gao');
+select xm from table1 where soundex(xm)=soundex('weather');
+XM
+--------
+weather
+wether
+14.TRIM('s' from 'string')
+LEADING   剪掉前面的字符
+TRAILING  剪掉后面的字符
+如果不指定,默认为空格符
+15.ABS 返回指定值的绝对值
+select abs(100),abs(-100) from dual;
+ABS(100) ABS(-100)
+--------- ---------
+100       100
+16.ACOS 给出反余弦的值
+select acos(-1) from dual;
+ACOS(-1)
+---------
+3.1415927
+17.ASIN 给出反正弦的值
+select asin(0.5) from dual;
+ASIN(0.5)
+---------
+.52359878
+18.ATAN 返回一个数字的反正切值
+select atan(1) from dual;
+ATAN(1)
+---------
+.78539816
+19.CEIL 返回大于或等于给出数字的最小整数
+select ceil(3.1415927) from dual;
+CEIL(3.1415927)
+---------------
+4
+20.COS 返回一个给定数字的余弦
+select cos(-3.1415927) from dual;
+COS(-3.1415927)
+---------------
+-1
+21.COSH 返回一个数字反余弦值
+select cosh(20) from dual;
+COSH(20)
+---------
+242582598
+22.EXP 返回一个数字e的n次方根
+select exp(2),exp(1) from dual;
+EXP(2)    EXP(1)
+--------- ---------
+7.3890561 2.7182818
+23.FLOOR 对给定的数字取整数
+select floor(2345.67) from dual;
+FLOOR(2345.67)
+--------------
+2345
+24.LN 返回一个数字的对数值
+select ln(1),ln(2),ln(2.7182818) from dual;
+LN(1)     LN(2) LN(2.7182818)
+--------- --------- -------------
+0 .69314718     .99999999
+25.LOG(n1,n2) 返回一个以n1为底n2的对数
+select log(2,1),log(2,4) from dual;
+LOG(2,1)  LOG(2,4)
+--------- ---------
+0         2
+26.MOD(n1,n2) 返回一个n1除以n2的余数
+select mod(10,3),mod(3,3),mod(2,3) from dual;
+
+MOD(10,3)  MOD(3,3)  MOD(2,3)
+--------- --------- ---------
+1         0         2
+27.POWER 返回n1的n2次方根
+select power(2,10),power(3,3) from dual;
+POWER(2,10) POWER(3,3)
+----------- ----------
+1024         27
+28.ROUND和TRUNC
+按照指定的精度进行舍入
+select round(55.5),round(-55.4),trunc(55.5),trunc(-55.5) from dual;
+ROUND(55.5) ROUND(-55.4) TRUNC(55.5) TRUNC(-55.5)
+----------- ------------ ----------- ------------
+56          -55          55          -55
+29.SIGN 取数字n的符号,大于0返回1,小于0返回-1,等于0返回0
+select sign(123),sign(-100),sign(0) from dual;
+SIGN(123) SIGN(-100)   SIGN(0)
+--------- ---------- ---------
+1         -1         0
+30.SIN 返回一个数字的正弦值
+select sin(1.57079) from dual;
+SIN(1.57079)
+------------
+1
+31.SIGH 返回双曲正弦的值
+select sin(20),sinh(20) from dual;
+
+SIN(20)  SINH(20)
+--------- ---------
+.91294525 242582598
+32.SQRT 返回数字n的根
+select sqrt(64),sqrt(10) from dual;
+SQRT(64)  SQRT(10)
+--------- ---------
+8 3.1622777
+33.TAN 返回数字的正切值
+select tan(20),tan(10) from dual;
+TAN(20)   TAN(10)
+--------- ---------
+2.2371609 .64836083
+34.TANH
+返回数字n的双曲正切值
+select tanh(20),tan(20) from dual;
+TANH(20)   TAN(20)
+--------- ---------
+1 2.2371609
+35.TRUNC
+按照指定的精度截取一个数
+select trunc(124.1666,-2) trunc1,trunc(124.16666,2) from dual;
+TRUNC1 TRUNC(124.16666,2)
+--------- ------------------
+100             124.16
+36.ADD_MONTHS
+增加或减去月份
+select to_char(add_months(to_date('199912','yyyymm'),2),'yyyymm') from dual;
+TO_CHA
+------
+200002
+select to_char(add_months(to_date('199912','yyyymm'),-2),'yyyymm') from dual;
+TO_CHA
+------
+199910
+37.LAST_DAY
+返回日期的最后一天
+select to_char(sysdate,'yyyy.mm.dd'),to_char((sysdate)+1,'yyyy.mm.dd') from dual;
+TO_CHAR(SY TO_CHAR((S
+---------- ----------
+2004.05.09 2004.05.10
+select last_day(sysdate) from dual;
+LAST_DAY(S
+----------
+31-5月 -04
+38.MONTHS_BETWEEN(date2,date1)
+给出date2-date1的月份
+select months_between('19-12月-1999','19-3月-1999') mon_between from dual;
+MON_BETWEEN
+-----------
+9
+SQL>selectmonths_between(to_date('2000.05.20','yyyy.mm.dd'),to_date('2005.05.20','yyyy.dd')) mon_betw from dual;
+MON_BETW
+---------
+-60
+39.NEW_TIME(date,'this','that')
+给出在this时区=other时区的日期和时间
+select to_char(sysdate,'yyyy.mm.dd hh24:mi:ss') bj_time,to_char(new_time
+2  (sysdate,'PDT','GMT'),'yyyy.mm.dd hh24:mi:ss') los_angles from dual;
+BJ_TIME             LOS_ANGLES
+------------------- -------------------
+2004.05.09 11:05:32 2004.05.09 18:05:32
+40.NEXT_DAY(date,'day')
+给出日期date和星期x之后计算下一个星期的日期
+select next_day('18-5月-2001','星期五') next_day from dual;
+NEXT_DAY
+----------
+25-5月 -01
+41.SYSDATE 用来得到系统的当前日期
+select to_char(sysdate,'dd-mm-yyyy day') from dual;
+TO_CHAR(SYSDATE,'
+-----------------
+09-05-2004 星期日
+trunc(date,fmt)按照给出的要求将日期截断,如果fmt='mi'表示保留分,截断秒
+select to_char(trunc(sysdate,'hh'),'yyyy.mm.dd hh24:mi:ss') hh,
+2  to_char(trunc(sysdate,'mi'),'yyyy.mm.dd hh24:mi:ss') hhmm from dual;
+HH                  HHMM
+------------------- -------------------
+2004.05.09 11:00:00 2004.05.09 11:17:00
+42.CHARTOROWID 将字符数据类型转换为ROWID类型
+select rowid,rowidtochar(rowid),ename from scott.emp;
+ROWID              ROWIDTOCHAR(ROWID) ENAME
+------------------ ------------------ ----------
+AAAAfKAACAAAAEqAAA AAAAfKAACAAAAEqAAA SMITH
+AAAAfKAACAAAAEqAAB AAAAfKAACAAAAEqAAB ALLEN
+AAAAfKAACAAAAEqAAC AAAAfKAACAAAAEqAAC WARD
+AAAAfKAACAAAAEqAAD AAAAfKAACAAAAEqAAD JONES
+
+
+SQL中的单记录函数
+1.ASCII
+返回与指定的字符对应的十进制数;
+select ascii('A') A,ascii('a') a,ascii('0') zero,ascii(' ') space from dual;
+        A         A      ZERO     SPACE
+--------- --------- --------- ---------
+       65        97        48        32
+
+2.CHR
+给出整数,返回对应的字符;
+select chr(54740) zhao,chr(65) chr65 from dual;
+ZH C
+-- -
+赵 A
+3.CONCAT
+连接两个字符串;
+select concat('010-','88888888')||'转23'  高乾竞电话 from dual;
+高乾竞电话
+----------------
+010-88888888转23
+4.INITCAP
+返回字符串并将字符串的第一个字母变为大写;
+select initcap('smith') upp from dual;
+UPP
+-----
+Smith
+
+5.INSTR(C1,C2,I,J)
+在一个字符串中搜索指定的字符,返回发现指定的字符的位置;
+C1    被搜索的字符串
+C2    希望搜索的字符串
+I     搜索的开始位置,默认为1
+J     出现的位置,默认为1
+select instr('oracle traning','ra',1,2) instring from dual;
+ INSTRING
+---------
+        9
+
+6.LENGTH
+返回字符串的长度;
+select name,length(name),addr,length(addr),sal,length(to_char(sal)) from gao.nchar_tst;
+NAME   LENGTH(NAME) ADDR             LENGTH(ADDR)       SAL LENGTH(TO_CHAR(SAL))
+------ ------------ ---------------- ------------ --------- --------------------
+高乾竞            3 北京市海锭区                6   9999.99                    7
+
+7.LOWER
+返回字符串,并将所有的字符小写
+select lower('AaBbCcDd')AaBbCcDd from dual;
+AABBCCDD
+--------
+aabbccdd
+
+8.UPPER
+返回字符串,并将所有的字符大写
+select upper('AaBbCcDd') upper from dual;
+UPPER
+--------
+AABBCCDD
+
+9.RPAD和LPAD(粘贴字符)
+RPAD  在列的右边粘贴字符
+LPAD  在列的左边粘贴字符
+select lpad(rpad('gao',10,'*'),17,'*')from dual;
+LPAD(RPAD('GAO',1
+-----------------
+*******gao*******
+不够字符则用*来填满
+
+10.LTRIM和RTRIM
+LTRIM  删除左边出现的字符串
+RTRIM  删除右边出现的字符串
+select ltrim(rtrim('   gao qian jing   ',' '),' ') from dual;
+LTRIM(RTRIM('
+-------------
+gao qian jing
+
+11.SUBSTR(string,start,count)
+取子字符串,从start开始,取count个
+select substr('13088888888',3,8) from dual;
+SUBSTR('
+--------
+08888888
+
+12.REPLACE('string','s1','s2')
+string   希望被替换的字符或变量
+s1       被替换的字符串
+s2       要替换的字符串
+select replace('he love you','he','i') from dual;
+REPLACE('H
+----------
+i love you
+
+13.SOUNDEX
+返回一个与给定的字符串读音相同的字符串
+create table table1(xm varchar(8));
+insert into table1 values('weather');
+insert into table1 values('wether');
+insert into table1 values('gao');
+select xm from table1 where soundex(xm)=soundex('weather');
+XM
+--------
+weather
+wether
+
+14.TRIM('s' from 'string')
+LEADING   剪掉前面的字符
+TRAILING  剪掉后面的字符
+如果不指定,默认为空格符
+15.ABS
+返回指定值的绝对值
+select abs(100),abs(-100) from dual;
+ ABS(100) ABS(-100)
+--------- ---------
+      100       100
+
+16.ACOS
+给出反余弦的值
+select acos(-1) from dual;
+ ACOS(-1)
+---------
+3.1415927
+
+17.ASIN
+给出反正弦的值
+select asin(0.5) from dual;
+ASIN(0.5)
+---------
+.52359878
+
+18.ATAN
+返回一个数字的反正切值
+select atan(1) from dual;
+  ATAN(1)
+---------
+.78539816
+
+19.CEIL
+返回大于或等于给出数字的最小整数
+select ceil(3.1415927) from dual;
+CEIL(3.1415927)
+---------------
+              4
+
+20.COS
+返回一个给定数字的余弦
+select cos(-3.1415927) from dual;
+COS(-3.1415927)
+---------------
+             -1
+
+21.COSH
+返回一个数字反余弦值
+select cosh(20) from dual;
+ COSH(20)
+---------
+242582598
+
+22.EXP
+返回一个数字e的n次方根
+select exp(2),exp(1) from dual;
+   EXP(2)    EXP(1)
+--------- ---------
+7.3890561 2.7182818
+
+23.FLOOR
+对给定的数字取整数
+select floor(2345.67) from dual;
+FLOOR(2345.67)
+--------------
+          2345
+
+24.LN
+返回一个数字的对数值
+select ln(1),ln(2),ln(2.7182818) from dual;
+    LN(1)     LN(2) LN(2.7182818)
+--------- --------- -------------
+        0 .69314718     .99999999
+
+25.LOG(n1,n2)
+返回一个以n1为底n2的对数
+select log(2,1),log(2,4) from dual;
+ LOG(2,1)  LOG(2,4)
+--------- ---------
+        0         2
+
+26.MOD(n1,n2)
+返回一个n1除以n2的余数
+select mod(10,3),mod(3,3),mod(2,3) from dual;
+MOD(10,3)  MOD(3,3)  MOD(2,3)
+--------- --------- ---------
+        1         0         2
+
+27.POWER
+返回n1的n2次方根
+select power(2,10),power(3,3) from dual;
+POWER(2,10) POWER(3,3)
+----------- ----------
+       1024         27
+
+28.ROUND和TRUNC
+按照指定的精度进行舍入
+select round(55.5),round(-55.4),trunc(55.5),trunc(-55.5) from dual;
+ROUND(55.5) ROUND(-55.4) TRUNC(55.5) TRUNC(-55.5)
+----------- ------------ ----------- ------------
+         56          -55          55          -55
+
+29.SIGN
+取数字n的符号,大于0返回1,小于0返回-1,等于0返回0
+select sign(123),sign(-100),sign(0) from dual;
+SIGN(123) SIGN(-100)   SIGN(0)
+--------- ---------- ---------
+        1         -1         0
+
+30.SIN
+返回一个数字的正弦值
+select sin(1.57079) from dual;
+SIN(1.57079)
+------------
+           1
+
+31.SIGH
+返回双曲正弦的值
+select sin(20),sinh(20) from dual;
+  SIN(20)  SINH(20)
+--------- ---------
+.91294525 242582598
+
+32.SQRT
+返回数字n的根
+select sqrt(64),sqrt(10) from dual;
+ SQRT(64)  SQRT(10)
+--------- ---------
+        8 3.1622777
+
+33.TAN
+返回数字的正切值
+select tan(20),tan(10) from dual;
+  TAN(20)   TAN(10)
+--------- ---------
+2.2371609 .64836083
+
+34.TANH
+返回数字n的双曲正切值
+select tanh(20),tan(20) from dual;
+ TANH(20)   TAN(20)
+--------- ---------
+        1 2.2371609
+
+35.TRUNC
+按照指定的精度截取一个数
+select trunc(124.1666,-2) trunc1,trunc(124.16666,2) from dual;
+   TRUNC1 TRUNC(124.16666,2)
+--------- ------------------
+      100             124.16
+
+36.ADD_MONTHS
+增加或减去月份
+select to_char(add_months(to_date('199912','yyyymm'),2),'yyyymm') from dual;
+TO_CHA
+------
+200002
+select to_char(add_months(to_date('199912','yyyymm'),-2),'yyyymm') from dual;
+TO_CHA
+------
+199910
+
+37.LAST_DAY
+返回日期的最后一天
+select to_char(sysdate,'yyyy.mm.dd'),to_char((sysdate)+1,'yyyy.mm.dd') from dual;
+TO_CHAR(SY TO_CHAR((S
+---------- ----------
+2004.05.09 2004.05.10
+select last_day(sysdate) from dual;
+LAST_DAY(S
+----------
+31-5月 -04
+
+38.MONTHS_BETWEEN(date2,date1)
+给出date2-date1的月份
+select months_between('19-12月-1999','19-3月-1999') mon_between from dual;
+MON_BETWEEN
+-----------
+          9
+SQL>selectmonths_between(to_date('2000.05.20','yyyy.mm.dd'),to_date('2005.05.20','yyyy.mm.dd')) mon_betw from dual;
+ MON_BETW
+---------
+      -60
+
+39.NEW_TIME(date,'this','that')
+给出在this时区=other时区的日期和时间
+select to_char(sysdate,'yyyy.mm.dd hh24:mi:ss') bj_time,to_char(new_time
+  2  (sysdate,'PDT','GMT'),'yyyy.mm.dd hh24:mi:ss') los_angles from dual;
+BJ_TIME             LOS_ANGLES
+------------------- -------------------
+2004.05.09 11:05:32 2004.05.09 18:05:32
+
+40.NEXT_DAY(date,'day')
+给出日期date和星期x之后计算下一个星期的日期
+select next_day('18-5月-2001','星期五') next_day from dual;
+NEXT_DAY
+----------
+25-5月 -01
+
+41.SYSDATE
+用来得到系统的当前日期
+select to_char(sysdate,'dd-mm-yyyy day') from dual;
+TO_CHAR(SYSDATE,'
+-----------------
+09-05-2004 星期日
+trunc(date,fmt)按照给出的要求将日期截断,如果fmt='mi'表示保留分,截断秒
+select to_char(trunc(sysdate,'hh'),'yyyy.mm.dd hh24:mi:ss') hh,
+  2  to_char(trunc(sysdate,'mi'),'yyyy.mm.dd hh24:mi:ss') hhmm from dual;
+HH                  HHMM
+------------------- -------------------
+2004.05.09 11:00:00 2004.05.09 11:17:00
+
+42.CHARTOROWID
+将字符数据类型转换为ROWID类型
+select rowid,rowidtochar(rowid),ename from scott.emp;
+ROWID              ROWIDTOCHAR(ROWID) ENAME
+------------------ ------------------ ----------
+AAAAfKAACAAAAEqAAA AAAAfKAACAAAAEqAAA SMITH
+AAAAfKAACAAAAEqAAB AAAAfKAACAAAAEqAAB ALLEN
+AAAAfKAACAAAAEqAAC AAAAfKAACAAAAEqAAC WARD
+AAAAfKAACAAAAEqAAD AAAAfKAACAAAAEqAAD JONES
+
+43.CONVERT(c,dset,sset)
+将源字符串 sset从一个语言字符集转换到另一个目的dset字符集
+select convert('strutz','we8hp','f7dec') "conversion" from dual;
+conver
+------
+strutz
+
+44.HEXTORAW
+将一个十六进制构成的字符串转换为二进制
+
+45.RAWTOHEXT
+将一个二进制构成的字符串转换为十六进制
+
+46.ROWIDTOCHAR
+将ROWID数据类型转换为字符类型
+
+47.TO_CHAR(date,'format')
+select to_char(sysdate,'yyyy/mm/dd hh24:mi:ss') from dual;
+TO_CHAR(SYSDATE,'YY
+-------------------
+2004/05/09 21:14:41
+
+48.TO_DATE(string,'format')
+将字符串转化为ORACLE中的一个日期
+
+49.TO_MULTI_BYTE
+将字符串中的单字节字符转化为多字节字符
+ select to_multi_byte('高') from dual;
+TO
+--
+高
+
+50.TO_NUMBER
+将给出的字符转换为数字
+select to_number('1999') year from dual;
+     YEAR
+---------
+     1999
+
+51.BFILENAME(dir,file)
+指定一个外部二进制文件
+SQL>insert into file_tb1 values(bfilename('lob_dir1','image1.gif'));
+
+52.CONVERT('x','desc','source')
+将x字段或变量的源source转换为desc
+select sid,serial#,username,decode(command,
+  2  0,'none',
+  3  2,'insert',
+  4  3,
+  5  'select',
+  6  6,'update',
+  7  7,'delete',
+  8  8,'drop',
+  9  'other') cmd  from v$session where type!='background';
+      SID   SERIAL# USERNAME                       CMD
+--------- --------- ------------------------------ ------
+        1         1                                none
+        2         1                                none
+        3         1                                none
+        4         1                                none
+        5         1                                none
+        6         1                                none
+        7      1275                                none
+        8      1275                                none
+        9        20 GAO                            select
+       10        40 GAO                            none
+
+53.DUMP(s,fmt,start,length)
+DUMP函数以fmt指定的内部数字格式返回一个VARCHAR2类型的值
+col global_name for a30
+col dump_string for a50
+set lin 200
+select global_name,dump(global_name,1017,8,5) dump_string from global_name;
+GLOBAL_NAME                    DUMP_STRING
+------------------------------ --------------------------------------------------
+ORACLE.WORLD                   Typ=1 Len=12 CharacterSet=ZHS16GBK: W,O,R,L,D
+
+54.EMPTY_BLOB()和EMPTY_CLOB()
+这两个函数都是用来对大数据类型字段进行初始化操作的函数
+
+55.GREATEST
+返回一组表达式中的最大值,即比较字符的编码大小.
+select greatest('AA','AB','AC') from dual;
+GR
+--
+AC
+select greatest('啊','安','天') from dual;
+GR
+--
+天
+
+56.LEAST
+返回一组表达式中的最小值
+select least('啊','安','天') from dual;
+LE
+--
+啊
+
+57.UID
+返回标识当前用户的唯一整数
+show user
+USER 为"GAO"
+select username,user_id from dba_users where user_id=uid;
+USERNAME                         USER_ID
+------------------------------ ---------
+GAO                                   25
+
+58.USER
+返回当前用户的名字
+select user from  dual;
+USER
+------------------------------
+GAO
+
+59.USEREVN
+返回当前用户环境的信息,opt可以是:
+ENTRYID,SESSIONID,TERMINAL,ISDBA,LABLE,LANGUAGE,CLIENT_INFO,LANG,VSIZE
+ISDBA  查看当前用户是否是DBA如果是则返回true
+select userenv('isdba') from dual;
+USEREN
+------
+FALSE
+select userenv('isdba') from dual;
+USEREN
+------
+TRUE
+SESSION
+返回会话标志
+select userenv('sessionid') from dual;
+USERENV('SESSIONID')
+--------------------
+                 152
+ENTRYID
+返回会话人口标志
+select userenv('entryid') from dual;
+USERENV('ENTRYID')
+------------------
+                 0
+INSTANCE
+返回当前INSTANCE的标志
+select userenv('instance') from dual;
+USERENV('INSTANCE')
+-------------------
+                  1
+LANGUAGE
+返回当前环境变量
+select userenv('language') from dual;
+USERENV('LANGUAGE')
+----------------------------------------------------
+SIMPLIFIED CHINESE_CHINA.ZHS16GBK
+LANG
+返回当前环境的语言的缩写
+select userenv('lang') from dual;
+USERENV('LANG')
+----------------------------------------------------
+ZHS
+TERMINAL
+返回用户的终端或机器的标志
+select userenv('terminal') from dual;
+USERENV('TERMINA
+----------------
+GAO
+VSIZE(X)
+返回X的大小(字节)数
+select vsize(user),user from dual;
+VSIZE(USER) USER
+----------- ------------------------------
+          6 SYSTEM
+
+60.AVG(DISTINCT|ALL)
+all表示对所有的值求平均值,distinct只对不同的值求平均值
+SQLWKS> create table table3(xm varchar(8),sal number(7,2));
+语句已处理。
+SQLWKS>  insert into table3 values('gao',1111.11);
+SQLWKS>  insert into table3 values('gao',1111.11);
+SQLWKS>  insert into table3 values('zhu',5555.55);
+SQLWKS> commit;
+select avg(distinct sal) from gao.table3;
+AVG(DISTINCTSAL)
+----------------
+         3333.33
+select avg(all sal) from gao.table3;
+AVG(ALLSAL)
+-----------
+    2592.59
+
+61.MAX(DISTINCT|ALL)
+求最大值,ALL表示对所有的值求最大值,DISTINCT表示对不同的值求最大值,相同的只取一次
+select max(distinct sal) from scott.emp;
+MAX(DISTINCTSAL)
+----------------
+            5000
+
+62.MIN(DISTINCT|ALL)
+求最小值,ALL表示对所有的值求最小值,DISTINCT表示对不同的值求最小值,相同的只取一次
+select min(all sal) from gao.table3;
+MIN(ALLSAL)
+-----------
+    1111.11
+
+63.STDDEV(distinct|all)
+求标准差,ALL表示对所有的值求标准差,DISTINCT表示只对不同的值求标准差
+select stddev(sal) from scott.emp;
+STDDEV(SAL)
+-----------
+  1182.5032
+select stddev(distinct sal) from scott.emp;
+STDDEV(DISTINCTSAL)
+-------------------
+           1229.951
+
+64.VARIANCE(DISTINCT|ALL)
+求协方差
+select variance(sal) from scott.emp;
+VARIANCE(SAL)
+-------------
+    1398313.9
+
+65.GROUP BY
+主要用来对一组数进行统计
+select deptno,count(*),sum(sal) from scott.emp group by deptno;
+   DEPTNO  COUNT(*)  SUM(SAL)
+--------- --------- ---------
+       10         3      8750
+       20         5     10875
+       30         6      9400
+
+66.HAVING
+对分组统计再加限制条件
+select deptno,count(*),sum(sal) from scott.emp group by deptno having count(*)>=5;
+   DEPTNO  COUNT(*)  SUM(SAL)
+--------- --------- ---------
+       20         5     10875
+       30         6      9400
+select deptno,count(*),sum(sal) from scott.emp having count(*)>=5 group by deptno ;
+   DEPTNO  COUNT(*)  SUM(SAL)
+--------- --------- ---------
+       20         5     10875
+       30         6      9400
+
+67.ORDER BY 用于对查询到的结果进行排序输出
+select deptno,ename,sal from scott.emp order by deptno,sal desc;
+/*   DEPTNO ENAME            SAL
+--------- ---------- ---------
+       10 KING            5000
+       10 CLARK           2450
+       10 MILLER          1300
+       20 SCOTT           3000
+       20 FORD            3000
+       20 JONES           2975
+       20 ADAMS           1100
+       20 SMITH            800
+       30 BLAKE           2850
+       30 ALLEN           1600
+       30 TURNER          1500
+       30 WARD            1250
+       30 MARTIN          1250
+       30 JAMES            950
+*/
