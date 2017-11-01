@@ -29,3 +29,5 @@ END;
 ##Json 四种提缴方式
 
 http://blog.csdn.net/tycoon1988/article/details/40080691
+Linux Git配置
+http://www.cnblogs.com/dee0912/p/5815267.html
