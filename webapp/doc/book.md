@@ -24,3 +24,8 @@ BEGIN
 retval := utl_raw.cast_to_raw(DBMS_OBFUSCATION_TOOLKIT.MD5(INPUT_STRING => passwd)) ;
 RETURN retval;
 END;
+
+
+##Json 四种提缴方式
+
+http://blog.csdn.net/tycoon1988/article/details/40080691
