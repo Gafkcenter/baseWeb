@@ -14,5 +14,6 @@
 -- 	FROM
 -- 		SYS.dual ;
 -- 	END ;
+--4.加入数据测试
 INSERT INTO "auto_incr_trigger" ("NAME_STR") VALUES('KKKKxCCCCCyz');
 INSERT INTO "auto_incr_trigger" ("NAME_STR") VALUES ('IUIUOIXXJLKHJHJK');
