@@ -1,0 +1,10 @@
+---分页：https://www.cnblogs.com/mfc-itblog/p/5983525.html
+---统计：http://blog.csdn.net/huxu981598436/article/details/38160719
+---多表查询：http://blog.csdn.net/rosekin/article/details/39298255
+---复杂查询:https://www.cnblogs.com/haozhengfei/p/6538408.html
+---Oracle子查询（嵌套查询）https://www.cnblogs.com/yzqm666/p/5859833.html
+---ORACLE多表关联UPDATE 语句 :http://blog.itpub.net/29378313/viewspace-1064069/
+---Oracle 多个查询语句结果合并:http://blog.csdn.net/huaishuming/article/details/50608454
+---https://www.cnblogs.com/yongtaiyu/archive/2013/09/13/3318539.html
+---http://www.jb51.net/article/31805.htm
+---http://blog.sina.com.cn/s/blog_6dda7d120102wb4m.html
